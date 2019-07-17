@@ -1,0 +1,10 @@
+#nav{
+    border-color: black;
+    border-style: solid;
+}
+
+#content{
+    border-color: black;
+    border-style: solid;
+    padding: 10px;
+}
