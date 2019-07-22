@@ -6,6 +6,7 @@
     $posts = wap\PostSeeder::seed();
 
     //What the comments are and which box they will display in
+    
     $posts[0]->addComments("Fred", "Cool post");
     $posts[1]->addComments("Fred", "Sweet");
     $posts[1]->addComments("Bob", "Great");
@@ -17,31 +18,33 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Week 2 Task 2</title>
+        <title>Week 2 Task 3</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
 
         <div id="content">
             <h1>Social Media</h1>
+
             <!-- Displaying the data in php -->
             <?php foreach($posts as $post) { ?>
                 <div id="post">
-                    <?= $post->getDate() ?>
-                    <br>
+                    <b> <?= $post->getDate() ?> </b>
+                    <p>
                     <img src="<?= $post->getImage() ?>" width="70" height="70" alt="cake image"> 
-                    <b> <?= $post->getUser() ?> </b>
+                    <b> <?= $post->getUser() ?> </b> </p>
                     <?= $post->getMessage() ?> 
-                    <br>
-                    <b>Comments:</b> 
-                    <br>
+                    <p> <b> Comments: </b> </p>
+
                     <!--  -->
                     <?php $comments = $post->getComments();
                     foreach($comments as $comment) { ?>
-                        <b> <?= $comment["user"] ?> </b> said <?= $comment["comment"] ?>
+                        <b> <?= $comment["user"] ?> </b> said " <?= $comment["comment"] ?> " <br>
                     <?php } ?>
+
                 </div>
             <?php } ?>
+
         </div>
 
     </body>
