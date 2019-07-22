@@ -6,6 +6,7 @@
     $posts = wap\PostSeeder::seed();
 
     //What the comments are and which box they will display in
+    
     $posts[0]->addComments("Fred", "Cool post");
     $posts[1]->addComments("Fred", "Sweet");
     $posts[1]->addComments("Bob", "Great");
@@ -17,13 +18,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Week 2 Task 2</title>
+        <title>Week 2 Task 3</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
 
         <div id="content">
             <h1>Social Media</h1>
+
             <!-- Displaying the data in php -->
             <?php foreach($posts as $post) { ?>
                 <div id="post">
@@ -42,6 +44,7 @@
 
                 </div>
             <?php } ?>
+
         </div>
 
     </body>

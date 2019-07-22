@@ -1,6 +1,10 @@
 <?php
     //Putting into a namespace called wap
     namespace wap;
+
+    //Use the Comment class
+    include 'classes/comment.php';
+    use wap\Comment;
     
     class Post{
         //Variables
