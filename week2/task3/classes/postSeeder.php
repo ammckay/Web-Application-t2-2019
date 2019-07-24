@@ -6,7 +6,7 @@
     //Use the namespace Post
     use wap\Post;
     //Gets info from post.php
-    include 'post.php';
+    include 'Post.php';
 
     class PostSeeder{
         //Create posts
