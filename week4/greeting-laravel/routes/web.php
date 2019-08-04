@@ -12,13 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('greetingForm');
 });
 
 
-// week4/greeting-laravel/public/greeting shows a blank page with the return message shown
-Route::get('greeting', function () {
-    return "Hello";
+Route::post('greeting', function () {
+    $name = request("name");
+    $age = request("age");
+    return view('greeting')->with('name', $name)->with('age', $age);
 });
 
 Route::get('product', function () {
