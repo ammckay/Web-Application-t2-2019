@@ -32,10 +32,10 @@ Route::get('search', function()
   $state = request("state");
 
   // call search() to perform search
-  search($name, $year, $state);
+  $pms = search($name, $year, $state);
 
   // call view to display search result
-  return view('results')->with('name', $name)->with('year', $year)->with('state', $state);
+  return view('search')->with('name', $name)->with('year', $year)->with('state', $state)->with('pms', $pms);
 });
 
 

@@ -11,7 +11,7 @@
   <h2>Australian Prime Ministers</h2>
   <h3>Query</h3>
 
-  <form method="post" action="results">
+  <form method="get" action="search">
   <table>
     <tr><td>Name: </td><td><input type="text" name="name"></td></tr>
     <tr><td>Year: </td><td><input type="text" name="year"></td></tr>
