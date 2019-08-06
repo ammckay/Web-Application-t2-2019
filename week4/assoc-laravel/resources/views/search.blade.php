@@ -14,14 +14,6 @@
 <h2>Australian Prime Ministers</h2>
 <h3>Results</h3>
 
-<?php 
-if (count($pms) == 0) {
-?>
-<p>No results found.</p>
-<?php
-} else {
-?>
-
 
 <table class="bordered">
 <thead>
@@ -30,25 +22,20 @@ if (count($pms) == 0) {
 <tbody>
 
 @foreach($pms as $pm)
+  @if (count($pm) == 0)
+  <p>No results found.</p>
+  @else
   <tr><td>{{$pm['index']}}</td><td>{{$pm['name']}}</td><td>{{$pm['from']}}</td><td>{{$pm['to']}}</td><td>{{$pm['duration']}}</td><td>{{$pm['party']}}</td><td>{{$pm['state']}}</td></tr>
-
+  @endif
 @endforeach
 
 </tbody>
 </table>
-<?php
-}
-?>
 
-<p><a href="index.html">New search</a></p>
+
+<p><a href="searchForm.blade.php">New search</a></p>
 
 <hr>
-<p>
-  Sources:
-  <a href="show.php?file=results.php">results.php</a>
-  <a href="show.php?file=includes/defs.php">includes/defs.php</a>
-  <a href="show.php?file=includes/pms.php">includes/pms.php</a>
-</p>
 
 </body>
 </html>
