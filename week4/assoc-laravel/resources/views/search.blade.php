@@ -9,6 +9,8 @@
 </head>
 
 <body>
+  Searched for: {{$name}} {{$year}} {{$state}}
+
 <h2>Australian Prime Ministers</h2>
 <h3>Results</h3>
 
