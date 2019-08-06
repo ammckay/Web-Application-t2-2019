@@ -1,14 +1,11 @@
-<!-- display results -->
-<!DOCTYPE html>
-<!-- Results page of associative array search example. -->
-<html>
-<head>
-    <title>Associative array search results page</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/wp.css')}}">
-</head>
+@extends('layout.master')
 
-<body>
+@section('title')
+  Result
+@endsection
+  
+@section('content') 
+
   Searched for: {{$name}} {{$year}} {{$state}}
 
 <h2>Australian Prime Ministers</h2>
@@ -37,5 +34,4 @@
 
 <hr>
 
-</body>
-</html>
+@endsection

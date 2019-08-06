@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<!-- Home page of PM database search example. -->
-<html>
-<head>
-  <title>Associative array search</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{{asset('css/wp.css')}}">
-</head>
+@extends('layout.master')
 
-<body>
+@section('title')
+  Associative array search
+@endsection
+  
+@section('content') 
 
   <h2>Australian Prime Ministers</h2>
   <h3>Query</h3>
@@ -27,5 +24,4 @@
     Source:
     <a href="show.php?file=index.html">index.html</a> 
   </p>
-</body>
-</html>
+  @endsection
