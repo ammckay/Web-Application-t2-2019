@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('homeForm');
 });
+
+
+Route::get('POST', function () {
+    $date = request("date");
+    $name = request("name");
+    $title = request("title");
+    $message = request("message");
+    /* Return name to homeForm */
+    return view('homeForm')->with('date', $date)->with('name', $name)->with('title', $title)->with('message', $message);
+});
