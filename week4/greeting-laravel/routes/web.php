@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::post('greeting', function () {
     $name = request("name");
     $age = request("age");
-    return view('greeting')->with('name', $name)->with('age', $age);
+    return view('greeting')->with('name', $name)->with('age', $age + 1);
 });
 
 Route::get('product', function () {

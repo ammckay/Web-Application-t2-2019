@@ -1,0 +1,10 @@
+What are the names of customers who live in Nathan?
+SELECT name
+FROM customers
+WHERE address like '%Nathan%';
+
+
+What are the names of customers who have bought Fred's Fries?
+SELECT name 
+FROM customers, stock 
+WHERE name like '%Fred's Fries%';
