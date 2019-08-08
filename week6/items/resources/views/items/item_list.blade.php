@@ -5,7 +5,16 @@
 @endsection
   
 @section('content') 
-  @foreach($items as $item)
-    <p>{{$item->summary}}: {{$item->details}}</p>
-  @endforeach
+
+  <h1>Items</h1>
+  @if ($items)
+    <ul>
+    @foreach($items as $item)
+      <li><a href="{{url("item_detail/$item->id")}}">{{$item->summary}}</a></li>
+    @endforeach
+    </ul>
+  @else
+    No item found
+  @endif
+
 @endsection
