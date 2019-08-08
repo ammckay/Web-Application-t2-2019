@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-  Social Media
+  Recently Posted
 @endsection
   
 @section('content') 
@@ -11,9 +11,9 @@
     <li>Welcome</li>
     <!-- Right side of bar -->
     <div class="navbar-right">
-      <a class="active" href="homeForm">Home</a>
+      <a href="{{url("/")}}">Home</a>
       <a href="unique">Unique</a>
-      <a href="recent">Recent</a>
+      <a class="active" href="recent">Recent</a>
     </div>
   </div>
 
