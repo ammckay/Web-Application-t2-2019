@@ -12,18 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('homeForm');
+    $sql = "select * from posts";
+    $posts = DB::select($sql);
+    return view('homeForm')->with('posts', $posts);
 });
 
-
-Route::get('POST', function () {
-    $date = request("date");
-    $name = request("name");
-    $title = request("title");
-    $message = request("message");
-    /* Return name to homeForm */
-    return view('homeForm')->with('date', $date)->with('name', $name)->with('title', $title)->with('message', $message);
-});
 
 Route::get('recent', function () {
     return view('recent');

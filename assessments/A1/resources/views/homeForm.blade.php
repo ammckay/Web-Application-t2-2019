@@ -22,34 +22,27 @@
 
   <div class="addPost">
       <!-- Add New Post Form -->
-      <form method="get" action="POST">
-      <table>
-        <tr><td>Date: </td><td><input type="text" name="date"></td></tr>
-        <tr><td>Name: </td><td><input type="text" name="name"></td></tr>
-        <tr><td>Title: </td><td><input type="text" name="title"></td></tr>
-        <tr><td>Message: </td><td><input type="text" name="message"></td></tr>
-        <tr><td colspan=2><input type="submit" value="Search" name="submitBtn">
-                          <input type="reset" value="Reset"></td></tr>
-      </table>
-      </form>
+      
   </div>
   <hr>
   
   <h1>Posts</h1>
 
   <div class="posts">
-    <div class="display">
-      <?php
-        if(isset($_REQUEST{'submitBtn'})) {
-          echo "<div>";
-          echo "Name: ", $name, "<br>";
-          echo $date, "<br>";
-          echo $title, "<br>";
-          echo $message;
-          echo "</div>";
-        }
-      ?>
-    </div>
+    @if ($posts)
+    @foreach($posts as $post)
+
+      <div class="display">
+        <b>{{$post->name}}</b>
+        {{$post->date}}
+        <p>{{$post->title}}</p>
+        <p>{{$post->message}}</p>
+      </div> 
+
+    @endforeach
+    @else
+      No item found
+    @endif
   </div>
 
 @endsection
