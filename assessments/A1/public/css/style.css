@@ -3,7 +3,8 @@ body {
     font-weight: normal;
     font-style: normal;
     background-color: white;
-    color: black
+    color: black;
+    margin: 0;
 }
 
 h1 {

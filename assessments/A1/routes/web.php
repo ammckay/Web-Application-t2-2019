@@ -24,3 +24,15 @@ Route::get('POST', function () {
     /* Return name to homeForm */
     return view('homeForm')->with('date', $date)->with('name', $name)->with('title', $title)->with('message', $message);
 });
+
+Route::get('recent', function () {
+    return view('recent');
+});
+
+Route::get('unique', function () {
+    return view('unique');
+});
+
+Route::get('homeForm', function () {
+    return view('homeForm');
+});
