@@ -54,6 +54,9 @@
   @foreach($posts as $post)
     @if ($post)
       <div class="display">
+        <img src="user1.jpg" width="50" height="50">
+        <img src="{{$post->name}}" width="70" height="70"> 
+
         <b>{{$post->name}}</b>
         {{$post->date}}
         <p>{{$post->title}}</p>

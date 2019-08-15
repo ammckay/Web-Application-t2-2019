@@ -98,18 +98,12 @@ function get_post($id) {
     return $post;
 };
 
-/* Get comments function */
-function get_comments($id) { 
-    $sql = "select * from comments where id=?";
-    $comments = DB::select($sql, array($id));
-};
-
-
 /* Comments */
 Route::get('comments/{id}', function ($id) {
-    $sql = "select * from comments";
+    $post = get_post($id);
+    $sql = "select name,comment from comments where comment_id and FK_id = 2";
     $comments = DB::select($sql);
-    return view('comments')->with('comments', $comments);
+    return view('comments')->with('post', $post)->with('comments', $comments);
 });
 
 
@@ -119,7 +113,7 @@ Route::post('add_comment', function () {
     $comment = request('comment');
     $id = add_comment($name, $comment);
     if ($id){
-        return redirect(url("comments"));
+        return redirect(url("comments/{id}"));
     } else {
         die("Error while adding post.");
     };

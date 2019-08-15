@@ -16,7 +16,13 @@
         <a href="recent">Recent</a>
         </div>
     </div>
-    
+
+    <div class="display">
+      <b>{{$post->name}}</b>
+      {{$post->date}}
+      <p>{{$post->title}}</p>
+      <p>{{$post->message}}</p>
+    </div> 
 
     <div id="container">
       <div id="addComment">
