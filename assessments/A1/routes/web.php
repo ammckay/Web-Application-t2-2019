@@ -40,6 +40,7 @@ Route::post('add_post', function () {
     $name = request('name');
     $title = request('title');
     $message = request('message');
+    /* Generates a new id for the instered post */
     $id = add_post($date, $name, $title, $message);
     if ($id){
         return redirect(url("/"));
@@ -98,11 +99,18 @@ function get_post($id) {
     return $post;
 };
 
+/* Get comments function */
+function get_comment($id) { 
+    $sql = "select * from comments where FK_id=?";
+    $comments = DB::select($sql, array($id));
+    return $comments;
+};
+
 /* Comments */
 Route::get('comments/{id}', function ($id) {
     $post = get_post($id);
-    $sql = "select name,comment from comments where comment_id and FK_id = 2";
-    $comments = DB::select($sql);
+    $comments = get_comment($id);
+    //dd($id);
     return view('comments')->with('post', $post)->with('comments', $comments);
 });
 
