@@ -17,6 +17,22 @@
     </div>
   </div>
 
-  <h1>Most Recently Viewed Posts</h1>
+  <h1>Most Recent Posts</h1>
+
+  @if ($posts)
+    @foreach($posts as $post)
+
+      <div class="display">
+        <b>{{$post->name}}</b>
+        {{$post->date}}
+        <p>{{$post->title}}</p>
+        <p>{{$post->message}}</p>
+        <p><a href="{{url("comments/$post->id")}}">Number of Comments / View Comments</a></p>
+      </div> 
+
+    @endforeach
+    @else
+    No posts found
+  @endif
 
 @endsection

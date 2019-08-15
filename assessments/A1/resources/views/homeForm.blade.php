@@ -50,21 +50,24 @@
   <h1>Posts</h1>
 
   <div class="posts">
-  @if ($posts)
-    @foreach($posts as $post)
 
+  @foreach($posts as $post)
+    @if ($post)
       <div class="display">
         <b>{{$post->name}}</b>
         {{$post->date}}
         <p>{{$post->title}}</p>
         <p>{{$post->message}}</p>
+        <a href="{{url("delete_post/$post->id")}}">Delete post</a><br>
+        <a href="{{url("update_post/$post->id")}}">Update post</a><br>
         <p><a href="{{url("comments/$post->id")}}">Number of Comments / View Comments</a></p>
       </div> 
 
-    @endforeach
-    @else
-    No posts found
-  @endif
+      @else
+      <p>No results found.</p>
+    @endif
+  @endforeach
+
   </div>
 
 @endsection

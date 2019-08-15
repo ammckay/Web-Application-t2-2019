@@ -26,6 +26,7 @@ Route::get('item_detail/{id}', function ($id) {
     //dd($item);
 });
 
+
 /* Adding items */
 Route::get('add_item', function () {
     return view('items.add_item');
@@ -42,9 +43,28 @@ Route::post('add_item_action', function () {
     };
 });
 
+
 /* Updating items */
-Route::get('update_item', function () {
-    return view('items.update_item');
+Route::get('update_item/{id}', function ($id) {
+    $item = get_item($id);
+    return view('items.update_item')->with('item', $item);
+});
+Route::post('update_item_action', function () {
+    $summary = request('summary');
+    $details = request('details');
+    $ids = update_item($summary, $details, $id);
+    if ($ids){
+        return redirect(url("item_detail/$ids"));
+    } else {
+        die("Error while updating item.");
+    };
+});
+
+
+/* Delete items */
+Route::get('delete_item/{id}', function ($id) {
+    $items = delete_item($id);
+    return redirect(url("/"))->with('items', $items);
 });
 
 
@@ -71,11 +91,13 @@ function get_item($id) {
 
 /* Update item function */
 function update_item($id, $summary, $details) {
-    $sql = "update item set summary = ?, details = ? where id = ?"; DB::update($sql, array($summary, $details, $id));
+    $sql = "update item set summary = ?,details = ? where id = ?"; 
+    DB::update($sql, array($summary, $details, $id));
 }
 
 /* Delete item function */
 function delete_item($id) {
-    $sql = "delete from item where id = ?"; DB::delete($sql, array($id));
+    $sql = "delete from item where id = ?"; 
+    DB::delete($sql, array($id));
 }
 
