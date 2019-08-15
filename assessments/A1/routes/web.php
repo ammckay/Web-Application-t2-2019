@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('homeForm')->with('posts', $posts);
 });
 
+
 Route::get('recent', function () {
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
@@ -64,11 +65,26 @@ function delete_post($id) {
     DB::delete($sql, array($id));
 }
 
-/* Updating items */
+/* Updating posts  NOT COMPLETE */
 Route::get('update_post/{id}', function ($id) {
     $post = get_post($id);
     return view('update_post')->with('post', $post);
 });
+Route::post('update_post_action', function () {
+    $name = request('name');
+    $title = request('title');
+    $message = request('message');
+    $id = update_post($name, $title, $message);
+    if ($id){
+        return redirect(url("/")); //Will go to the comments
+    } else {
+        die("Error while updating post.");
+    };
+});
+function update_post($id, $name, $title, $message) {
+    $sql = "update posts set name = ?,title = ?,message = ? where id = ?"; 
+    DB::update($sql, array($name, $title, $message, $id));
+}
 
 
 /* Get post function */
@@ -82,3 +98,35 @@ function get_post($id) {
     return $post;
 };
 
+/* Get comments function */
+function get_comments($id) { 
+    $sql = "select * from comments where id=?";
+    $comments = DB::select($sql, array($id));
+};
+
+
+/* Comments */
+Route::get('comments/{id}', function ($id) {
+    $sql = "select * from comments";
+    $comments = DB::select($sql);
+    return view('comments')->with('comments', $comments);
+});
+
+
+/* Adding comments */
+Route::post('add_comment', function () {
+    $name = request('name');
+    $comment = request('comment');
+    $id = add_comment($name, $comment);
+    if ($id){
+        return redirect(url("comments"));
+    } else {
+        die("Error while adding post.");
+    };
+});
+function add_comment($name, $comment){
+    $sql = "insert into comments (name, comment) values (?, ?)";
+    DB::insert($sql, array($name, $comment));
+    $id = DB::getPdo()->lastInsertId();
+    return $id;
+}

@@ -16,24 +16,41 @@
         <a href="recent">Recent</a>
         </div>
     </div>
+    
 
-    <div class="display">
-      <b>{{$post->name}}</b>
-      {{$post->date}}
-      <p>{{$post->title}}</p>
-      <p>{{$post->message}}</p>
-    </div> 
+    <div id="container">
+      <div id="addComment">
+        <h1>Add Comments</h1>
+        <form method="get" action="add_comment">
+          {{csrf_field()}}
+          <p>
+            <label>Name</label>
+            <input type="text" name="name">
+          </p>
+          <p>
+            <label>Comment</label>
+            <textarea type="text" name="comment"></textarea>
+          </p>
+          <input type="submit" value="Add">
+        </form>
+      </div>
 
-    <h1>Comments</h1>
+      <div id="comment">
+        <h1>Comments</h1>
 
-    <h1>Add Comments</h1>
-    <form method="get" action="add_comment">
-    {{csrf_field()}}
-    <p>
-      <label>Comment</label>
-      <textarea type="text" name="comment"></textarea>
-    </p>
-    <input type="submit" value="Add">
-    </form>
+        @foreach($comments as $comment)
+        @if ($comment)
+        <div class="display">
+          <p><b>{{$comment->name}}</b></p>
+          <p>{{$comment->comment}}</p>
+        </div>
+        @else
+        <p>No results found.</p>
+        @endif
+        @endforeach
+
+      </div>
+
+    </div>
 
 @endsection

@@ -52,9 +52,9 @@ Route::get('update_item/{id}', function ($id) {
 Route::post('update_item_action', function () {
     $summary = request('summary');
     $details = request('details');
-    $ids = update_item($summary, $details, $id);
-    if ($ids){
-        return redirect(url("item_detail/$ids"));
+    $id = update_item($summary, $details, $id);
+    if ($id){
+        return redirect(url("item_detail/$id"));
     } else {
         die("Error while updating item.");
     };

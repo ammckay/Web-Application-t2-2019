@@ -68,3 +68,19 @@ h1 {
     padding: 20px;
     margin: 20px;
 }
+
+/* Container for comments and add comments */
+#container {
+    width: 90%;
+    /* Center */
+    margin-left: auto;
+    margin-right: auto;
+}
+#addComment {
+    width: 40%;
+    float: left;
+}
+#comment {
+    width: 60%;
+    float: right;
+}
