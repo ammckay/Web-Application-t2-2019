@@ -8,8 +8,12 @@ body {
 }
 
 h1 {
-    font-size: 22px;
+    font-size: 24px;
     padding: 10px;
+}
+h2 {
+    font-size: 21px;
+    padding: 12px;
 }
 
 /* Navigation Bar */
@@ -48,14 +52,27 @@ h1 {
     float: right;
 }
 
-.addPost {
-    width: 80%;
-    padding: 10px;
-    font-size: 18px;
+
+#container {
+    width: 95%;
+    display: flex;
+    /* Center */
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* Home page */
+
+/* Adding a new post form section */
+.addPost {
+    width: 25%;
+    padding: 10px;
+    font-size: 18px;
+    position: fixed;
+}
+
+/* Posts section */
 .posts {
-    width: 80%;
     padding: 10px;
     font-size: 18px;
     /* Center */
@@ -63,19 +80,37 @@ h1 {
     margin-right: auto;
 }
 
+/* How each post is displayed */
 .display {
+    background-color: antiquewhite;
+    border: 2px solid black;
+    margin: 30px;
+    padding: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+/* Display posts for comments */
+.display2 {
+    background-color: antiquewhite;
     border: 2px solid black;
     padding: 20px;
-    margin: 20px;
-}
-
-/* Container for comments and add comments */
-#container {
-    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 30px;
     /* Center */
     margin-left: auto;
     margin-right: auto;
 }
+.left {
+    font-size: 18px;
+}
+.right {
+    font-size: 14px;
+}
+
+/* Comments page */
 #addComment {
     width: 40%;
     float: left;

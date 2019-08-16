@@ -17,11 +17,17 @@
         </div>
     </div>
 
-    <div class="display">
-      <b>{{$post->name}}</b>
-      {{$post->date}}
-      <p>{{$post->title}}</p>
-      <p>{{$post->message}}</p>
+    <div class="display2">
+    <div class="left">
+            <img src="{{$post->name}}" width="70" height="70"> 
+            <b>{{$post->name}}</b>
+            <h2>{{$post->title}}</h2>
+            <p>{{$post->message}}</p>
+          </div> 
+
+          <div class="right">
+            {{$post->date}}
+          </div> 
     </div> 
 
     <div id="container">
@@ -42,13 +48,15 @@
       </div>
 
       <div id="comment">
-        <h1>Comments</h1>
 
+      
+        <h1>Comments </h1>
         @foreach($comments as $comment)
         @if ($comment)
         <div class="display">
           <p><b>{{$comment->name}}</b></p>
           <p>{{$comment->comment}}</p>
+          
         </div>
         @else
         <p>No results found.</p>

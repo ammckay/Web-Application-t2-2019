@@ -15,7 +15,9 @@ Route::get('/', function () {
     // It is ordered by id DESC so it displays the newest at the top and the oldest at the bottom of the posts
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
-    return view('homeForm')->with('posts', $posts);
+    $sql2 = "select *,count(*) as num from comments,posts where posts.id = comments.FK_id";
+    $comments = DB::select($sql2);
+    return view('homeForm')->with('posts', $posts)->with('comments', $comments);
 });
 
 
@@ -40,7 +42,6 @@ Route::post('add_post', function () {
     $name = request('name');
     $title = request('title');
     $message = request('message');
-    /* Generates a new id for the instered post */
     $id = add_post($date, $name, $title, $message);
     if ($id){
         return redirect(url("/"));
@@ -77,7 +78,7 @@ Route::post('update_post_action', function () {
     $message = request('message');
     $id = update_post($name, $title, $message);
     if ($id){
-        return redirect(url("/")); //Will go to the comments
+        return redirect(url("comments/{id}")); //Will go to the comments
     } else {
         die("Error while updating post.");
     };
@@ -101,6 +102,8 @@ function get_post($id) {
 
 /* Get comments function */
 function get_comment($id) { 
+    /* Selecting the comments where the FK_id is the same as the id from posts */
+    /* Count how many there are in this id/FK_id */
     $sql = "select * from comments where FK_id=?";
     $comments = DB::select($sql, array($id));
     return $comments;
@@ -108,27 +111,35 @@ function get_comment($id) {
 
 /* Comments */
 Route::get('comments/{id}', function ($id) {
+    /* Get post */
     $post = get_post($id);
+    /* Get comments for that post */
     $comments = get_comment($id);
-    //dd($id);
     return view('comments')->with('post', $post)->with('comments', $comments);
 });
 
+/* Get count comments function */
+function count_comment($id) { 
+    $sql = "select count(comment_id) from comments where FK_id=?";
+    $count = DB::select($sql, array($id));
+    return $count;
+};
 
-/* Adding comments */
+
+/* Adding comments NEED TO START THIS */
 Route::post('add_comment', function () {
     $name = request('name');
     $comment = request('comment');
-    $id = add_comment($name, $comment);
-    if ($id){
-        return redirect(url("comments/{id}"));
+    $comment_id = add_comment($name, $comment);
+    if ($comment_id){
+        return redirect(url("/"));
     } else {
         die("Error while adding post.");
     };
 });
 function add_comment($name, $comment){
-    $sql = "insert into comments (name, comment) values (?, ?)";
+    $sql = "insert into comments (name, comment, FK_id) values (?, ?, ?)";
     DB::insert($sql, array($name, $comment));
-    $id = DB::getPdo()->lastInsertId();
-    return $id;
+    $comment_id = DB::getPdo()->lastInsertId();
+    return $comment_id;
 }

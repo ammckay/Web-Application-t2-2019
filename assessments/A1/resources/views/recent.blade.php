@@ -17,22 +17,34 @@
     </div>
   </div>
 
-  <h1>Most Recent Posts</h1>
+  <div class="posts">
 
-  @if ($posts)
-    @foreach($posts as $post)
+  <h1>Most Recent Posts</h1> 
 
-      <div class="display">
-        <b>{{$post->name}}</b>
-        {{$post->date}}
-        <p>{{$post->title}}</p>
-        <p>{{$post->message}}</p>
-        <p><a href="{{url("comments/$post->id")}}">Number of Comments / View Comments</a></p>
-      </div> 
+  @foreach($posts as $post)
+      @if ($post)
+        <div class="display">
 
+          <div class="left">
+            <img src="{{$post->name}}" width="70" height="70"> 
+            <b>{{$post->name}}</b>
+            <h2>{{$post->title}}</h2>
+            <p>{{$post->message}}</p>
+          </div> 
+
+          <div class="right">
+            <a href="{{url("comments/$post->id")}}">Comments </a><br>
+            {{$post->date}}<br>
+            <a href="{{url("delete_post/$post->id")}}">Delete</a>
+            <a href="{{url("update_post/$post->id")}}">Edit</a>
+          </div> 
+
+        </div> 
+        @else
+        <p>No results found.</p>
+      @endif
     @endforeach
-    @else
-    No posts found
-  @endif
+
+  </div> 
 
 @endsection
