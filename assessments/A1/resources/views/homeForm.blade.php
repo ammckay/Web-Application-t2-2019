@@ -42,7 +42,7 @@
         <label>Message:</label>
         <textarea type="text" name="message"></textarea>
       </p>
-      <input type="submit" value="Add">
+      <input type="submit" value="Add Post">
       </form>
 
     

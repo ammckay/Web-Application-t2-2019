@@ -64,10 +64,11 @@ Route::get('delete_post/{id}', function ($id) {
 });
 function delete_post($id) {
     $sql = "delete from posts where id = ?"; 
-    DB::delete($sql, array($id));
+    $sql2 = "delete from comments where FK_id = ?"; 
+    DB::delete($sql, $sql2, array($id));
 }
 
-/* Updating posts  NOT COMPLETE */
+/* Updating posts  NOT COMPLETE 
 Route::get('update_post/{id}', function ($id) {
     $post = get_post($id);
     return view('update_post')->with('post', $post);
@@ -86,18 +87,14 @@ Route::post('update_post_action', function () {
 function update_post($id, $name, $title, $message) {
     $sql = "update posts set name = ?,title = ?,message = ? where id = ?"; 
     DB::update($sql, array($name, $title, $message, $id));
-}
+}*/
 
 
 /* Get post function */
 function get_post($id) { 
     $sql = "select * from posts where id=?";
     $posts = DB::select($sql, array($id));
-    if (count($posts) != 1){
-        die("Something has gone wrong, invalid query or result: $sql");
-    };
-    $post = $posts[0];
-    return $post;
+    return $posts;
 };
 
 /* Get comments function */
@@ -112,34 +109,34 @@ function get_comment($id) {
 /* Comments */
 Route::get('comments/{id}', function ($id) {
     /* Get post */
-    $post = get_post($id);
+    $posts = get_post($id);
     /* Get comments for that post */
     $comments = get_comment($id);
-    return view('comments')->with('post', $post)->with('comments', $comments);
+    return view('comments')->with('posts', $posts)->with('comments', $comments);
 });
 
-/* Get count comments function */
-function count_comment($id) { 
-    $sql = "select count(comment_id) from comments where FK_id=?";
-    $count = DB::select($sql, array($id));
-    return $count;
-};
-
-
-/* Adding comments NEED TO START THIS */
+/* Adding comments NEED TO COMPLETE */
 Route::post('add_comment', function () {
     $name = request('name');
     $comment = request('comment');
-    $comment_id = add_comment($name, $comment);
-    if ($comment_id){
-        return redirect(url("/"));
+    $id = add_comment($name, $comment);
+    if ($id){
+        return redirect(url("comments"));
     } else {
-        die("Error while adding post.");
+        die("Error while adding comment.");
     };
 });
 function add_comment($name, $comment){
-    $sql = "insert into comments (name, comment, FK_id) values (?, ?, ?)";
+    $sql = "insert into comments (name, comment) values (?, ?)";
     DB::insert($sql, array($name, $comment));
-    $comment_id = DB::getPdo()->lastInsertId();
-    return $comment_id;
+    $id = DB::getPdo()->lastInsertId();
+    return $id;
 }
+
+
+/* Get count comments function */
+function count_comment($id) { 
+    $sql = "select count(*) from comments where FK_id=?";
+    $count = DB::select($sql, array($id));
+    return $count;
+};

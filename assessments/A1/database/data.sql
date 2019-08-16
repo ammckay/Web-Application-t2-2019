@@ -2,7 +2,7 @@ drop table if exists posts;
 drop table if exists comments;
 
 create table posts (
-    id int primary key,    
+    id integer not null primary key autoincrement,    
     date varchar(80) not null,    
     name varchar(80) not null,
     title text default '',
@@ -10,7 +10,7 @@ create table posts (
 );
 
 create table comments (
-    comment_id int primary key,
+    comment_id integer not null primary key autoincrement,
     name varchar(80) not null,
     comment text default '',
     FK_id int

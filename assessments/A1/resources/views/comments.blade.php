@@ -19,6 +19,8 @@
 
     <div class="display2">
     <div class="left">
+    @foreach($posts as $post)
+      @if ($post)
             <img src="{{$post->name}}" width="70" height="70"> 
             <b>{{$post->name}}</b>
             <h2>{{$post->title}}</h2>
@@ -28,23 +30,32 @@
           <div class="right">
             {{$post->date}}
           </div> 
+            
+        @else
+        <p>No results found.</p>
+      @endif
+    @endforeach
     </div> 
 
     <div id="container">
       <div id="addComment">
         <h1>Add Comments</h1>
-        <form method="get" action="add_comment">
-          {{csrf_field()}}
+
+        <!-- Add New Comment Form -->
+        <form action="add_comment" method="post"> 
+          {{ csrf_field() }}
           <p>
-            <label>Name</label>
+            <label>Name:</label>
             <input type="text" name="name">
           </p>
           <p>
-            <label>Comment</label>
+            <label>Comment:</label>
             <textarea type="text" name="comment"></textarea>
           </p>
-          <input type="submit" value="Add">
+          
+          <input type="submit" value="Submit">
         </form>
+
       </div>
 
       <div id="comment">
