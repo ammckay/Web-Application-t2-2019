@@ -126,6 +126,9 @@ h3 {
 }
 .right {
     font-size: 14px;
+    padding-left: 20px;
+    width: 30%;
+    text-align: right;
 }
 .icon {
     /* Top and bottom padding are 20px and left and right are 10px */

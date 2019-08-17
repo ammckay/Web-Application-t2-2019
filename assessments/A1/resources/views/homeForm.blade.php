@@ -57,7 +57,7 @@
 
           <div class="left">
             <div class="icon">
-              <img src="images/user1.jpg" alt="User Icon" width="100" height="100"> 
+              <img src="{{$icon}}" alt="User Icon" width="100" height="100">
             </div>
             <div class="text">
               <b>{{$post->name}}</b><br>

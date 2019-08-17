@@ -17,23 +17,26 @@ Route::get('/', function () {
     $posts = DB::select($sql);
     $sql2 = "select *,count(*) as num from comments,posts where posts.id = comments.FK_id";
     $comments = DB::select($sql2);
-    return view('homeForm')->with('posts', $posts)->with('comments', $comments);
+    $icon = asset('/images/user1.jpg');
+    return view('homeForm')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon);
 });
 
 
 Route::get('recent', function () {
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
-    return view('recent')->with('posts', $posts);
+    $icon = asset('/images/user1.jpg');
+    return view('recent')->with('posts', $posts)->with('icon', $icon);
 });
 
 Route::get('unique', function () {
     return view('unique');
 });
 
+/*
 Route::get('home', function () {
     return view('homeForm');
-});
+});*/
 
 
 /* Adding posts */
@@ -111,7 +114,9 @@ Route::get('comments/{id}', function ($id) {
     $posts = get_post($id);
     /* Get comments for that post */
     $comments = get_comment($id);
-    return view('comments')->with('posts', $posts)->with('comments', $comments);
+
+    $icon = asset('/images/user1.jpg');
+    return view('comments')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon);
 });
 
 /* Adding comments NEED TO COMPLETE */
