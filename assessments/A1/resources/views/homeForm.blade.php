@@ -17,8 +17,6 @@
     </div>
   </div>
 
-  <div id="container">
-
     <div class="addPost">
 
       <h1>Add a New Post</h1>
@@ -45,10 +43,9 @@
       <input type="submit" value="Add Post">
       </form>
 
-    
-    <hr>
     </div>
     
+    <hr>
 
     <div class="posts">
 
@@ -59,16 +56,24 @@
         <div class="display">
 
           <div class="left">
-            <img src="{{$post->name}}" width="70" height="70"> 
-            <b>{{$post->name}}</b>
-            <h2>{{$post->title}}</h2>
-            <p>{{$post->message}}</p>
+            <div class="icon">
+              <img src="images/user1.jpg" alt="User Icon" width="100" height="100"> 
+            </div>
+            <div class="text">
+              <b>{{$post->name}}</b><br>
+              <h2>{{$post->date}}</h2>
+              <h3>{{$post->title}}</h3>
+              <p>{{$post->message}}</p>
+
+              <hr>
+
+              @foreach($comments as $comment)
+                <a href="{{url("comments/$post->id")}}">Comments {{$comment->num}}</a><br>
+              @endforeach
+            </div>
           </div> 
 
           <div class="right">
-            @foreach($comments as $comment)
-            <a href="{{url("comments/$post->id")}}">Comments {{$comment->num}}</a><br>@endforeach
-            {{$post->date}}<br>
             <a href="{{url("delete_post/$post->id")}}">Delete</a>
             <a href="{{url("update_post/$post->id")}}">Edit</a>
           </div> 
@@ -80,6 +85,5 @@
     @endforeach
 
     </div>
-  </div>
 
 @endsection

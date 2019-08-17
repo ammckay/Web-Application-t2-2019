@@ -2,7 +2,7 @@ body {
     font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-weight: normal;
     font-style: normal;
-    background-color: white;
+    background-color: #e3f2ff;
     color: black;
     margin: 0;
 }
@@ -12,8 +12,12 @@ h1 {
     padding: 10px;
 }
 h2 {
+    font-size: 14px;
+    color: #647b8f;
+}
+h3 {
     font-size: 21px;
-    padding: 12px;
+    color: #647b8f;
 }
 
 /* Navigation Bar */
@@ -53,27 +57,17 @@ h2 {
 }
 
 
-#container {
-    width: 95%;
-    display: flex;
-    /* Center */
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* Home page */
 
 /* Adding a new post form section */
 .addPost {
-    width: 25%;
     padding: 10px;
     font-size: 18px;
-    position: fixed;
 }
 
 /* Posts section */
 .posts {
-    padding: 10px;
+    padding: 20px;
     font-size: 18px;
     /* Center */
     margin-left: auto;
@@ -82,17 +76,17 @@ h2 {
 
 /* How each post is displayed */
 .display {
-    background-color: antiquewhite;
+    background-color: white;
     border: 2px solid black;
-    margin: 30px;
-    padding: 20px;
+    margin: 35px;
+    padding: 25px;
     width: 90%;
     display: flex;
     justify-content: space-between;
 }
-/* Display posts for comments */
+/* Display posts for comments page */
 .display2 {
-    background-color: antiquewhite;
+    background-color: white;
     border: 2px solid black;
     padding: 20px;
     display: flex;
@@ -105,9 +99,33 @@ h2 {
 }
 .left {
     font-size: 18px;
+    display: flex;
+}
+.left p{
+    color: #647b8f;
+}
+.left a {
+    float: left;
+    color: #647b8f;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 17px;
+}
+/* Change colour when hovered over */
+.left a:hover {
+    background-color: rgb(146, 215, 247);
+    color: black;
 }
 .right {
     font-size: 14px;
+}
+.icon {
+    /* Top and bottom padding are 20px and left and right are 10px */
+    padding: 10px 20px;
+}
+.text {
+    padding: 10px;
 }
 
 /* Comments page */

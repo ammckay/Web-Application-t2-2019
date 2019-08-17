@@ -64,8 +64,7 @@ Route::get('delete_post/{id}', function ($id) {
 });
 function delete_post($id) {
     $sql = "delete from posts where id = ?"; 
-    $sql2 = "delete from comments where FK_id = ?"; 
-    DB::delete($sql, $sql2, array($id));
+    DB::delete($sql, array($id));
 }
 
 /* Updating posts  NOT COMPLETE 
