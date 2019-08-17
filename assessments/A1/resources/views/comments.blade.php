@@ -21,15 +21,19 @@
     <div class="left">
     @foreach($posts as $post)
       @if ($post)
-            <img src="{{$post->name}}" width="70" height="70"> 
-            <b>{{$post->name}}</b>
-            <h2>{{$post->title}}</h2>
-            <p>{{$post->message}}</p>
-          </div> 
+        <div class="icon">
+              <img src="images/user1.jpg" alt="User Icon" width="100" height="100"> 
+        </div>
+        <div class="text">
+          <b>{{$post->name}}</b><br>
+          <h2>{{$post->date}}</h2>
+          <h3>{{$post->title}}</h3>
+          <p>{{$post->message}}</p>
+        </div> 
+        </div>
 
-          <div class="right">
-            {{$post->date}}
-          </div> 
+        <div class="right">
+        </div> 
             
         @else
         <p>No results found.</p>
