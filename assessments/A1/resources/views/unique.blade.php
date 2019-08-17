@@ -1,3 +1,6 @@
+<!--
+    This page does ........
+-->
 @extends('layout.master')
 
 @section('title')
@@ -18,6 +21,16 @@
   </div>
 
   
-  <h1>Unique Posts</h1>
+  <h1>Unique Users</h1>
+
+  @foreach($posts as $post)
+    @if ($post)
+      <div class="display">
+        <a href="{{url("usersPosts/$post->name")}}">{{$post->name}}</a>
+      </div>
+    @else
+      <p>No results found.</p>
+    @endif
+  @endforeach
 
 @endsection

@@ -1,3 +1,6 @@
+<!--
+    This page does ........
+-->
 @extends('layout.master')
 
 @section('title')

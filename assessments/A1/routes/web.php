@@ -30,7 +30,9 @@ Route::get('recent', function () {
 });
 
 Route::get('unique', function () {
-    return view('unique');
+    $sql = "select * from posts order by id DESC";
+    $posts = DB::select($sql);
+    return view('unique')->with('posts', $posts);
 });
 
 /*
@@ -99,6 +101,7 @@ function get_post($id) {
     return $posts;
 };
 
+
 /* Get comments function */
 function get_comment($id) { 
     /* Selecting the comments where the FK_id is the same as the id from posts */
@@ -143,4 +146,21 @@ function count_comment($id) {
     $sql = "select count(*) from comments where FK_id=?";
     $count = DB::select($sql, array($id));
     return $count;
+};
+
+
+/* Unique */
+Route::get('usersPosts/{name}', function ($name) {
+    /* Get post */
+    $userP = get_user_post($name);
+
+    $icon = asset('/images/user1.jpg');
+    return view('usersPosts')->with('userP', $userP)->with('icon', $icon);
+});
+
+/* Get post made by a certain user function */
+function get_user_post($name) { 
+    $sql = "select * from posts where name=?";
+    $userP = DB::select($sql, array($name));
+    return $userP;
 };
