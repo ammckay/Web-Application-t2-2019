@@ -22,7 +22,7 @@
 
   <div class="posts">
 
-  <h1>Most Recent Posts</h1> 
+  <h1>Posts from the last seven days</h1> 
 
   @foreach($posts as $post)
       @if ($post)

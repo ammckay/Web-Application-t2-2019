@@ -17,7 +17,7 @@ Route::get('/', function () {
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
     /* Count comments */
-    $count = "select count(comment_id) as num from comments where FK_id=2";
+    $count = "select count(comment_id) as num from comments order by FK_id DESC";
     $comments = DB::select($count);
 
     /* Icon image */
@@ -32,8 +32,15 @@ Route::get('/', function () {
 
 /* Recent page */
 Route::get('recent', function () {
-    $sql = "select * from posts order by id DESC";
+    date_default_timezone_set('Australia/Queensland');
+    // Get posts from the last 7 days
+    $now = date('Y-m-d');
+    $currentDate = strtotime($now);
+    $lastWeek = strtotime("-7 day", $currentDate);
+    $endDate = date('Y-m-d', $lastWeek);
+    $sql = "select * from posts where date between '$endDate' and '$now' order by id DESC";
     $posts = DB::select($sql);
+
     /* Icon image */
     $icon = asset('/images/user1.jpg');
     /* Dropdown image */
@@ -84,7 +91,8 @@ function get_count_comment($id) {
 
 /* Adding posts */
 Route::post('add_post', function () {
-    $date = request('date');
+    // Instead of the user inputing the date, the current date is taken
+    $date = date('Y-m-d');
     $name = request('name');
     $title = request('title');
     $message = request('message');
@@ -172,7 +180,6 @@ function get_comment($id) {
 Route::post('add_comment/{id}', function ($id) {
     $name = request('name');
     $comment = request('comment');
-    $FK_id = $id;
     $comment_id = add_comment($name, $comment, $FK_id);
     if ($comment_id){
         return redirect(url("comments/{id}"));

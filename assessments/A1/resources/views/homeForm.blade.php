@@ -29,7 +29,10 @@
       {{csrf_field()}}
       <p>
         <label>Date:</label>
-        <input type="text" name="date">
+        <?php
+          date_default_timezone_set("Australia/Queensland");
+          echo date("Y-m-d");
+        ?>
       </p>
       <p>
         <label>Name:</label>
@@ -51,8 +54,8 @@
     <hr>
 
     <div class="posts">
-
-    <h1>Posts</h1> 
+    
+    <h1>Posts</h1>
 
     @foreach($posts as $post)
       @if ($post)

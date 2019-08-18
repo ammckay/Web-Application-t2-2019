@@ -17,7 +17,7 @@ create table comments (
 );
 
 
-insert into posts values (1, "2019-08-2", "John Smith",  "Truth", "It is Truth");   
+insert into posts values (1, "2019-08-02", "John Smith",  "Truth", "It is Truth");   
 insert into posts values (2, "2019-08-10", "Will Smith", "Not Truth", "It is not Truth");
 insert into posts values (3, "2019-08-11", "Casey Adams", "Movies", "Movies coming out soon will be cool");
 insert into posts values (4, "2019-08-12", "Todd Jones", "Feeling", "Feeling okay");
