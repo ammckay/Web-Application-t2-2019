@@ -12,8 +12,8 @@
         <!-- Right side of bar -->
         <div class="navbar-right">
         <a href="{{url("/")}}">Home</a>
-        <a href="unique">Unique</a>
-        <a href="recent">Recent</a>
+        <a href="{{url("unique")}}">Unique</a>
+        <a href="{{url("recent")}}">Recent</a>
         </div>
     </div>
 

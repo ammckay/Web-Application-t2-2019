@@ -27,6 +27,7 @@
     @if ($post)
       <div class="display">
         <a href="{{url("usersPosts/$post->name")}}">{{$post->name}}</a>
+        Has made ___ posts.
       </div>
     @else
       <p>No results found.</p>

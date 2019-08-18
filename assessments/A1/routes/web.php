@@ -15,22 +15,34 @@ Route::get('/', function () {
     // It is ordered by id DESC so it displays the newest at the top and the oldest at the bottom of the posts
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
-    $sql2 = "select *,count(*) as num from comments,posts where posts.id = comments.FK_id";
-    $comments = DB::select($sql2);
+    $id = "select count(posts.id) as num from posts,comments where posts.id = comments.FK_id";
+    $comments = DB::select($id);
+    /* Icon image */
     $icon = asset('/images/user1.jpg');
-    return view('homeForm')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon);
+    /* Dropdown image */
+    $dots = asset('/images/dots.png');
+    /* Comments image */
+    $com = asset('/images/comments.png');
+    
+    return view('homeForm')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon)->with('dots', $dots)->with('com', $com);              
 });
 
 
 Route::get('recent', function () {
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
+    /* Icon image */
     $icon = asset('/images/user1.jpg');
-    return view('recent')->with('posts', $posts)->with('icon', $icon);
+    /* Dropdown image */
+    $dots = asset('/images/dots.png');
+    /* Comments image */
+    $com = asset('/images/comments.png');
+    return view('recent')->with('posts', $posts)->with('icon', $icon)->with('dots', $dots)->with('com', $com);
 });
 
 Route::get('unique', function () {
-    $sql = "select * from posts order by id DESC";
+    /* Distinct stops dupicates */
+    $sql = "select distinct name from posts order by id DESC";
     $posts = DB::select($sql);
     return view('unique')->with('posts', $posts);
 });
@@ -164,3 +176,4 @@ function get_user_post($name) {
     $userP = DB::select($sql, array($name));
     return $userP;
 };
+

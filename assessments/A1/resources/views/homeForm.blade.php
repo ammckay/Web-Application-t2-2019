@@ -52,7 +52,7 @@
 
     <div class="posts">
 
-    <h1>Posts</h1>
+    <h1>Posts</h1> 
 
     @foreach($posts as $post)
       @if ($post)
@@ -69,16 +69,18 @@
               <p>{{$post->message}}</p>
 
               <hr>
-
               @foreach($comments as $comment)
-                <a href="{{url("comments/$post->id")}}">Comments {{$comment->num}}</a><br>
-              @endforeach
+                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40"> {{$comment->num}}</a><br>
+                @endforeach
             </div>
           </div> 
 
           <div class="right">
-            <a href="{{url("delete_post/$post->id")}}">Delete</a>
-            <a href="{{url("update_post/$post->id")}}">Edit</a>
+            <img src="{{$dots}}" alt="User Icon" width="40" height="15" class="dropBtn">
+            <div class="dropdown-content">
+              <a href="{{url("update_post/$post->id")}}">Edit</a>
+              <a href="{{url("delete_post/$post->id")}}">Delete</a>
+            </div>
           </div> 
 
         </div> 
