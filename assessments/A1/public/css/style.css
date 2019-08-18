@@ -121,6 +121,7 @@ h3 {
 .left {
     font-size: 18px;
     display: flex;
+    width: 95%;
 }
 .left p{
     color: #647b8f;
@@ -149,6 +150,7 @@ h3 {
 .right {
     float: right;
     overflow: hidden;
+    padding-right: 5px;
 }
 /* Dropdown Button */
 .right .dropBtn {

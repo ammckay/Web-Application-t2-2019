@@ -11,12 +11,15 @@
 |
 */
 
+/* Home page */
 Route::get('/', function () {
     // It is ordered by id DESC so it displays the newest at the top and the oldest at the bottom of the posts
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
-    $id = "select count(posts.id) as num from posts,comments where posts.id = comments.FK_id";
-    $comments = DB::select($id);
+    /* Count comments */
+    $count = "select count(comment_id) as num from comments where FK_id=2";
+    $comments = DB::select($count);
+
     /* Icon image */
     $icon = asset('/images/user1.jpg');
     /* Dropdown image */
@@ -27,7 +30,7 @@ Route::get('/', function () {
     return view('homeForm')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon)->with('dots', $dots)->with('com', $com);              
 });
 
-
+/* Recent page */
 Route::get('recent', function () {
     $sql = "select * from posts order by id DESC";
     $posts = DB::select($sql);
@@ -40,6 +43,7 @@ Route::get('recent', function () {
     return view('recent')->with('posts', $posts)->with('icon', $icon)->with('dots', $dots)->with('com', $com);
 });
 
+/* Unique page */
 Route::get('unique', function () {
     /* Distinct stops dupicates */
     $sql = "select distinct name from posts order by id DESC";
@@ -47,10 +51,35 @@ Route::get('unique', function () {
     return view('unique')->with('posts', $posts);
 });
 
-/*
-Route::get('home', function () {
-    return view('homeForm');
-});*/
+/* Unique user's posts */
+Route::get('usersPosts/{name}', function ($name) {
+    /* Get post */
+    $userP = get_user_post($name);
+
+    $icon = asset('/images/user1.jpg');
+    return view('usersPosts')->with('userP', $userP)->with('icon', $icon);
+});
+
+/* Get post made by a certain user function */
+function get_user_post($name) { 
+    $sql = "select * from posts where name=?";
+    $userP = DB::select($sql, array($name));
+    return $userP;
+};
+
+/* Get post function */
+function get_post($id) { 
+    $sql = "select * from posts where id=?";
+    $posts = DB::select($sql, array($id));
+    return $posts;
+};
+
+/* Get post function */
+function get_count_comment($id) { 
+    $sql = "select count(comment_id) as num from posts,comments where FK_id=?";
+    $comments = DB::select($sql, array($id));
+    return $comments;
+};
 
 
 /* Adding posts */
@@ -77,10 +106,17 @@ function add_post($date, $name, $title, $message){
 /* Delete posts */
 Route::get('delete_post/{id}', function ($id) {
     $posts = delete_post($id);
-    return redirect(url("/"))->with('posts', $posts);
+    $comments = delete_post_comment($id);
+    return redirect(url("/"))->with('posts', $posts)->with('comments', $comments);
 });
+/* Delete the post */
 function delete_post($id) {
     $sql = "delete from posts where id = ?"; 
+    DB::delete($sql, array($id));
+}
+/* Delete the comments for that post */
+function delete_post_comment($id) {
+    $sql = "delete from comments where FK_id = ?"; 
     DB::delete($sql, array($id));
 }
 
@@ -106,13 +142,21 @@ function update_post($id, $name, $title, $message) {
 }*/
 
 
-/* Get post function */
-function get_post($id) { 
-    $sql = "select * from posts where id=?";
-    $posts = DB::select($sql, array($id));
-    return $posts;
-};
 
+/* Comments */
+Route::get('comments/{id}', function ($id) {
+    /* Get post */
+    $posts = get_post($id);
+    /* Get comments for that post */
+    $comments = get_comment($id);
+    /* Icon image */
+    $icon = asset('/images/user1.jpg');
+    /* Dropdown image */
+    $dots = asset('/images/dots.png');
+    /* Comments image */
+    $com = asset('/images/comments.png');
+    return view('comments')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon)->with('dots', $dots)->with('com', $com);
+});
 
 /* Get comments function */
 function get_comment($id) { 
@@ -123,57 +167,33 @@ function get_comment($id) {
     return $comments;
 };
 
-/* Comments */
-Route::get('comments/{id}', function ($id) {
-    /* Get post */
-    $posts = get_post($id);
-    /* Get comments for that post */
-    $comments = get_comment($id);
-
-    $icon = asset('/images/user1.jpg');
-    return view('comments')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon);
-});
 
 /* Adding comments NEED TO COMPLETE */
-Route::post('add_comment', function () {
+Route::post('add_comment/{id}', function ($id) {
     $name = request('name');
     $comment = request('comment');
-    $id = add_comment($name, $comment);
-    if ($id){
-        return redirect(url("comments"));
+    $FK_id = $id;
+    $comment_id = add_comment($name, $comment, $FK_id);
+    if ($comment_id){
+        return redirect(url("comments/{id}"));
     } else {
         die("Error while adding comment.");
     };
 });
-function add_comment($name, $comment){
-    $sql = "insert into comments (name, comment) values (?, ?)";
-    DB::insert($sql, array($name, $comment));
-    $id = DB::getPdo()->lastInsertId();
-    return $id;
+function add_comment($name, $comment, $FK_id){
+    $sql = "insert into comments (name, comment, FK_id) values (?, ?, ?)";
+    DB::insert($sql, array($name, $comment, $FK_id));
+    $comment_id = DB::getPdo()->lastInsertId();
+    return $comment_id;
 }
 
-
-/* Get count comments function */
-function count_comment($id) { 
-    $sql = "select count(*) from comments where FK_id=?";
-    $count = DB::select($sql, array($id));
-    return $count;
-};
-
-
-/* Unique */
-Route::get('usersPosts/{name}', function ($name) {
-    /* Get post */
-    $userP = get_user_post($name);
-
-    $icon = asset('/images/user1.jpg');
-    return view('usersPosts')->with('userP', $userP)->with('icon', $icon);
+/* Delete comments */
+Route::get('delete_comment/{comment_id}', function ($comment_id) {
+    $comments = delete_comments($comment_id);
+    return redirect(url("/"))->with('comments', $comments);
 });
-
-/* Get post made by a certain user function */
-function get_user_post($name) { 
-    $sql = "select * from posts where name=?";
-    $userP = DB::select($sql, array($name));
-    return $userP;
-};
+function delete_comments($comment_id) {
+    $sql = "delete from comments where comment_id = ?"; 
+    DB::delete($sql, array($comment_id));
+}
 

@@ -41,12 +41,14 @@
     @endforeach
     </div> 
 
+
     <div id="container">
       <div id="addComment">
+
         <h1>Add Comments</h1>
 
         <!-- Add New Comment Form -->
-        <form action="add_comment" method="post"> 
+        <form action="{{url("add_comment/{id}")}}" method="post"> 
           {{ csrf_field() }}
           <p>
             <label>Name:</label>
@@ -62,15 +64,31 @@
 
       </div>
 
+
       <div id="comment">
 
-      
         <h1>Comments </h1>
+
+        <!-- Display the comments for the selected post-->
+
         @foreach($comments as $comment)
         @if ($comment)
         <div class="display">
-          <p><b>{{$comment->name}}</b></p>
-          <p>{{$comment->comment}}</p>
+          <!-- Name and comment display -->
+          <div class="left">
+            <div class="text">
+              <b>{{$comment->name}}</b>  
+              <p>{{$comment->comment}}</p>
+            </div>
+          </div>
+
+          <!-- Delete comment -->
+          <div class="right">
+            <img src="{{$dots}}" alt="User Icon" width="40" height="15" class="dropBtn">
+            <div class="dropdown-content">
+              <a href="{{url("delete_comment/$comment->comment_id")}}">Delete</a>
+            </div>
+          </div> 
           
         </div>
         @else
