@@ -23,13 +23,16 @@ SELECT title
 FROM blog
 WHERE title like '%Japan%';
 
+NEEDS WORK LOOK AT VIDEO
 b) What are the titles of all blogs that contain an article with "Japan" in the headline?
-SELECT headline
+SELECT title
 FROM blog,articale
-WHERE blog.id = article.blog_id ___;
+WHERE blog.id = article.blog_id title like '%Japan%';
 
 c) What are the titles of all blogs that contain an article written by the blog creator?
-
+SELECT titles
+FROM blogs,articlae
+WHERE where blogs.creator = article.author;
 
 
 TASK 4:
