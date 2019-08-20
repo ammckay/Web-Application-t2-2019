@@ -58,6 +58,16 @@
             <label>Comment:</label>
             <textarea type="text" name="comment"></textarea>
           </p>
+          <p>
+          @foreach($posts as $post)
+          @if ($post)
+          <textarea name="id">{{$post->id}}</textarea>
+          @else
+        <p>No results found.</p>
+        @endif
+      @endforeach
+      
+          </p>
           
           <input type="submit" value="Submit">
         </form>

@@ -20,8 +20,9 @@
     </div>
   </div>
 
+  
 
-    <h1>Posts Made by (put in this user's name)</h1>
+    <h1>User's Posts</h1>
 
     @foreach($userP as $user)
       @if ($user)

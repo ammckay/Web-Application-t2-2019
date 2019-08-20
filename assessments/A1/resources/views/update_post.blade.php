@@ -20,11 +20,12 @@
     <h1>Update Post</h1>
 
     <div class="posts">
+    @foreach($posts as $post)
+      @if ($post)
 
         <form method="post" action=" {{url("update_post_action")}} ">
             {{csrf_field()}}
-            <input type="hidden" name="id" value="{{ $post->id }}"> 
-
+            <input type="hidden" name="id" value="{{ $post->id }}">
             <p>
                 <label>Name: </label>
                 <input type="text" name="name" value="{{ $post->name }}"> 
@@ -35,10 +36,18 @@
             </p>
             <p>
                 <label>Message:</label>
-                <textarea name="Message">{{ $post->message }}</textarea>
+                <textarea name="message">{{ $post->message }}</textarea>
             </p>
+
+            <textarea name="id">{{$post->id}}</textarea>
+            
             <input type="submit" value="Update post"> 
         </form>
+
+        @else
+        <p>No results found.</p>
+      @endif
+    @endforeach
 
     </div>
 

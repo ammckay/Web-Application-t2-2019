@@ -72,9 +72,9 @@
               <p>{{$post->message}}</p>
 
               <hr>
-              @foreach($comments as $comment)
-                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40"> {{$comment->num}}</a><br>
-                @endforeach
+              
+                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40"> {{$post->num}}</a><br>
+               
             </div>
           </div> 
 

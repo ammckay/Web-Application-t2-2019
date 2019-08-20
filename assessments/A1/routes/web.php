@@ -14,11 +14,12 @@
 /* Home page */
 Route::get('/', function () {
     // It is ordered by id DESC so it displays the newest at the top and the oldest at the bottom of the posts
-    $sql = "select * from posts order by id DESC";
+    $sql = "select *,(select count(*) from comments,posts where comments.FK_id = posts.id)as num from posts order by id DESC";
     $posts = DB::select($sql);
-    /* Count comments */
-    $count = "select count(comment_id) as num from comments order by FK_id DESC";
-    $comments = DB::select($count);
+
+    // /* Count comments */
+    // $count = "select *,(select count(*) from comments,posts where comments.FK_id = posts.id) as num from comments order by FK_id DESC";
+    // $comments = DB::select($count);
 
     /* Icon image */
     $icon = asset('/images/user1.jpg');
@@ -27,17 +28,19 @@ Route::get('/', function () {
     /* Comments image */
     $com = asset('/images/comments.png');
     
-    return view('homeForm')->with('posts', $posts)->with('comments', $comments)->with('icon', $icon)->with('dots', $dots)->with('com', $com);              
+    return view('homeForm')->with('posts', $posts)->with('icon', $icon)->with('dots', $dots)->with('com', $com);              
 });
 
 /* Recent page */
 Route::get('recent', function () {
+    // Set the defult timezone as QLD
     date_default_timezone_set('Australia/Queensland');
     // Get posts from the last 7 days
     $now = date('Y-m-d');
     $currentDate = strtotime($now);
     $lastWeek = strtotime("-7 day", $currentDate);
     $endDate = date('Y-m-d', $lastWeek);
+    // Get posts that are between currentDate and endDate ordered by newest to oldest
     $sql = "select * from posts where date between '$endDate' and '$now' order by id DESC";
     $posts = DB::select($sql);
 
@@ -69,7 +72,7 @@ Route::get('usersPosts/{name}', function ($name) {
 
 /* Get post made by a certain user function */
 function get_user_post($name) { 
-    $sql = "select * from posts where name=?";
+    $sql = "select * from posts where name=? order by id DESC";
     $userP = DB::select($sql, array($name));
     return $userP;
 };
@@ -91,6 +94,8 @@ function get_count_comment($id) {
 
 /* Adding posts */
 Route::post('add_post', function () {
+    // Set the defult timezone as QLD
+    date_default_timezone_set('Australia/Queensland');
     // Instead of the user inputing the date, the current date is taken
     $date = date('Y-m-d');
     $name = request('name');
@@ -128,26 +133,26 @@ function delete_post_comment($id) {
     DB::delete($sql, array($id));
 }
 
-/* Updating posts  NOT COMPLETE 
+/* Updating posts  NOT COMPLETE */
 Route::get('update_post/{id}', function ($id) {
-    $post = get_post($id);
-    return view('update_post')->with('post', $post);
+    $posts = get_post($id);
+    return view('update_post')->with('posts', $posts);
 });
 Route::post('update_post_action', function () {
     $name = request('name');
     $title = request('title');
     $message = request('message');
-    $id = update_post($name, $title, $message);
-    if ($id){
-        return redirect(url("comments/{id}")); //Will go to the comments
-    } else {
-        die("Error while updating post.");
-    };
+    $FK_id = request('id');
+    $id = update_post($name, $title, $message, $FK_id);
+   
+        //Will go to the comments for that post
+        return redirect(url("comments/{$FK_id}"));
+    
 });
-function update_post($id, $name, $title, $message) {
-    $sql = "update posts set name = ?,title = ?,message = ? where id = ?"; 
-    DB::update($sql, array($name, $title, $message, $id));
-}*/
+function update_post($name, $title, $message, $FK_id ) {
+    $sql = "update posts set name = ?,title = ?,message = ? where id = $FK_id"; 
+    DB::update($sql, array($name, $title, $message));
+}
 
 
 
@@ -177,12 +182,13 @@ function get_comment($id) {
 
 
 /* Adding comments NEED TO COMPLETE */
-Route::post('add_comment/{id}', function ($id) {
+Route::post('add_comment/{id}', function () {
     $name = request('name');
     $comment = request('comment');
+    $FK_id = request('id');
     $comment_id = add_comment($name, $comment, $FK_id);
     if ($comment_id){
-        return redirect(url("comments/{id}"));
+        return redirect(url("comments/{$FK_id}"));
     } else {
         die("Error while adding comment.");
     };
@@ -196,6 +202,7 @@ function add_comment($name, $comment, $FK_id){
 
 /* Delete comments */
 Route::get('delete_comment/{comment_id}', function ($comment_id) {
+    $FK_id = request('id');
     $comments = delete_comments($comment_id);
     return redirect(url("/"))->with('comments', $comments);
 });
