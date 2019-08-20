@@ -1,10 +1,51 @@
-What are the names of customers who live in Nathan?
+TASK 1:
+a) Online blog example. A blog management site has a set of blogs. Each blog has a title and a creator and a set of articles. Each article has a headline, a text and an author, and appears in a single blog.
+Entities: Blog, and article
+Blog(id, title, creator)
+Article(id, healine, text, author, blog_id)
+
+b) Online newspaper example. A newspaper has a set of (daily) issues. Each issue has a set of articles. Each article has a headline, a text, an author and a set of photos, and appears in a single issue. Each photo has a caption, a photographer and an image, and may appear in different articles.
+Entities: Newspaper, issue, article, photo
+Issue(id, date)
+Article(id, headline, text, author, issue_id)
+Photo(id, caption, photographer, image)
+Article_Photo(articale_id, photo_id)
+
+c) Online journal example. A journal has a name, a date, and a set of articles. Each article has a title, a date, a set of authors, a body, and a set of references (which are themselves articles). Each author has a name and an affiliation. An author may contribute to different articles and the same article may be referenced in different articles.
+Entities: Journal, Article, Authors
+Journal(name, date)
+Article(title, date, authors_id, body, references)
+Authors(id, name, affiliation)
+
+TASK 2:
+a) What are the titles of all blogs with "Japan" in the title?
+SELECT title
+FROM blog
+WHERE title like '%Japan%';
+
+b) What are the titles of all blogs that contain an article with "Japan" in the headline?
+SELECT headline
+FROM blog,articale
+WHERE blog.id = article.blog_id ___;
+
+c) What are the titles of all blogs that contain an article written by the blog creator?
+
+
+
+TASK 4:
+
+a) What are the names of customers who live in Nathan?
 SELECT name
 FROM customers
 WHERE address like '%Nathan%';
 
+    Sally
 
-What are the names of customers who have bought Fred's Fries?
-SELECT name 
-FROM customers, stock 
-WHERE name like '%Fred's Fries%';
+
+b) What are the names of customers who have bought Fred's Fries?  (Fred's Fries's ItemId is 2)
+Select (SELECT name FROM customers WHERE Id = CustId) 
+FROM orders 
+WHERE ItemId = 2;
+
+    Sally
+    John
