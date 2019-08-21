@@ -143,6 +143,7 @@ Route::post('update_post_action', function () {
     $title = request('title');
     $message = request('message');
     $FK_id = request('id');
+    
     $id = update_post($name, $title, $message, $FK_id);
    
         //Will go to the comments for that post
