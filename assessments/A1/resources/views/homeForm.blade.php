@@ -17,6 +17,7 @@
       <a class="active" href="{{url("/")}}">Home</a>
       <a href="unique">Unique</a>
       <a href="recent">Recent</a>
+      <a href="doc">Documentation</a>
     </div>
   </div>
 
