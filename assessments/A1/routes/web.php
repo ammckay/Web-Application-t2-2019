@@ -37,7 +37,7 @@ Route::get('recent', function () {
 
     // Get posts that are between currentDate and endDate ordered by newest to oldest
     // Count how many comments there are for each post
-    $sql = "select * from posts where date between '$endDate' and '$now' order by id DESC";
+    $sql = "select *,(select count(*) from comments where comments.FK_id = posts.id) as num from posts where date between '$endDate' and '$now' order by id DESC";
     $posts = DB::select($sql);
 
     // Icon image
@@ -62,14 +62,16 @@ Route::get('unique', function () {
 Route::get('usersPosts/{name}', function ($name) {
     // Get post
     $userP = get_user_post($name);
+    // Comments image
+    $com = asset('/images/comments.png');
 
     $icon = asset('/images/user1.jpg');
-    return view('usersPosts')->with('userP', $userP)->with('icon', $icon);
+    return view('usersPosts')->with('userP', $userP)->with('icon', $icon)->with('com', $com);
 });
 
 // Get post made by a certain user function
 function get_user_post($name) { 
-    $sql = "select * from posts where name=? order by id DESC";
+    $sql = "select *,(select count(*) from comments where comments.FK_id = posts.id) as num from posts where name=? order by id DESC";
     $userP = DB::select($sql, array($name));
     return $userP;
 };
@@ -163,7 +165,6 @@ Route::get('comments/{id}', function ($id) {
 // Get comments function
 function get_comment($id) { 
     // Selecting the comments where the FK_id is the same as the id from posts
-    // Count how many there are in this id/FK_id 
     $sql = "select * from comments where FK_id=?";
     $comments = DB::select($sql, array($id));
     return $comments;

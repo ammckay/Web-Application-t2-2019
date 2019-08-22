@@ -1,10 +1,10 @@
 <!--
-    This page does ........
+    This page displays the name of all the people who have a posts
 -->
 @extends('layout.master')
 
 @section('title')
-  Social Media
+  Unique
 @endsection
   
 @section('content') 

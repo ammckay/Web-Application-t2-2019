@@ -1,10 +1,10 @@
 <!--
-    This page does ........
+    This page display all the posts the selected user has made
 -->
 @extends('layout.master')
 
 @section('title')
-  Social Media
+  User's Post
 @endsection
   
 @section('content') 
@@ -15,9 +15,9 @@
     <!-- Right side of bar -->
     <div class="navbar-right">
       <a href="{{url("/")}}">Home</a>
-      <a href="unique">Unique</a>
-      <a href="recent">Recent</a>
-      <a href="doc">Documentation</a>
+      <a href="{{url("unique")}}">Unique</a>
+      <a href="{{url("recent")}}">Recent</a>
+      <a href="{{url("doc")}}">Documentation</a>
     </div>
   </div>
 
@@ -38,6 +38,10 @@
               <h2>{{$user->date}}</h2>
               <h3>{{$user->title}}</h3>
               <p>{{$user->message}}</p>
+
+              <hr>
+              
+              <a href="{{url("comments/$user->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40">{{$user->num}}</a><br>
             </div>
           </div> 
 

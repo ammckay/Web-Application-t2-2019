@@ -1,3 +1,6 @@
+<!--
+    This page allows the user to update the selected post and once finished, goes to the comments page for that user
+-->
 @extends('layout.master')
 
 @section('title')
@@ -12,9 +15,9 @@
         <!-- Right side of bar -->
         <div class="navbar-right">
         <a href="{{url("/")}}">Home</a>
-        <a href="unique">Unique</a>
-        <a href="recent">Recent</a>
-        <a href="doc">Documentation</a>
+        <a href="{{url("unique")}}">Unique</a>
+        <a href="{{url("recent")}}">Recent</a>
+        <a href="{{url("doc")}}">Documentation</a>
         </div>
     </div>
 
@@ -41,7 +44,7 @@
                   <textarea name="message">{{ $post->message }}</textarea>
               </p>
 
-              <label name="id">{{$post->id}}</label>
+              <label name="id" class="hide">{{$post->id}}</label>
               
               <p>
                 <input type="submit" value="Update Post">

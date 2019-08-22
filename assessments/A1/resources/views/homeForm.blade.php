@@ -1,5 +1,5 @@
 <!--
-    This page does ........
+    This page displays the posts timeline
 -->
 @extends('layout.master')
 

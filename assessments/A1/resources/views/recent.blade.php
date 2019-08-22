@@ -1,5 +1,5 @@
 <!--
-    This page does ........
+    This page displays every post from the last 7 days 
 -->
 @extends('layout.master')
 
