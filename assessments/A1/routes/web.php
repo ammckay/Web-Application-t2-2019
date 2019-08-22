@@ -22,8 +22,9 @@ Route::get('/', function () {
 });
 
 // Documentation & ER Diagram page
-Route::get('doc', function () {
-    return view('doc');
+Route::get('doc', function () {// Comments image 
+    $diagram = asset('/images/ER_Diagram.png');
+    return view('doc')->with('diagram', $diagram);
 });
 
 // Recent page 

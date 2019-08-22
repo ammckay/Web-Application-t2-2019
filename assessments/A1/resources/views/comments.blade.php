@@ -62,7 +62,7 @@
           <p>
           @foreach($posts as $post)
           @if ($post)
-          <textarea name="id">{{$post->id}}</textarea>
+          <label name="id">{{$post->id}}</label>
           @else
         <p>No results found.</p>
         @endif

@@ -40,7 +40,7 @@
                 <textarea name="message">{{ $post->message }}</textarea>
             </p>
 
-            <textarea name="id">{{$post->id}}</textarea>
+            <label name="id">{{$post->id}}</label>
             
             <input type="submit" value="Update post"> 
         </form>

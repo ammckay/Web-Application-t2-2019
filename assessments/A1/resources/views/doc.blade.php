@@ -21,4 +21,24 @@
     </div>
   </div>
 
+  <div class="ERD">
+    <h1>ER Diagram</h1>
+    <img src="{{$diagram}}" alt="ER Diagram" width="350" height="350"> 
+
+    <h1>Documentation</h1>
+
+    I was able to complete all of the details for this assignment.  A user can add a post to 
+    the posts timeline with all posts being order with the lastest at the top and oldest at the 
+    bottom.  The date for each new post is automatically calculated for the accuracy of the 
+    timeline and the icon is automatically added, while the user then inputs their name, title, 
+    and message for the post.  Each post also displays how many comments that post has.  Each 
+    post has to option to edit or delete the post.  Editing the post is in a new page where the 
+    user can change the name, title, and message of the post, and once user has finished editting,
+    the comments page for that post displays.  Deleting the post also deletes every comment for 
+    that post.  Each post has a comments page where comments can be added or deleted, with each 
+    comment having a name and a message.<br>
+    Interesting approaches and anything extra implemented ...
+
+  </div>
+
 @endsection

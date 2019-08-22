@@ -197,3 +197,18 @@ h3 {
     width: 60%;
     float: right;
 }
+
+/* ER Diagram & Documentation */
+.ERD {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin: 10px;
+    /* Text */
+    line-height: 1.6;
+    font-size: 18px;
+    /* Center */
+    margin-left: auto;
+    margin-right: auto;
+}
