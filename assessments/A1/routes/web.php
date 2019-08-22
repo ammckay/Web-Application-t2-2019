@@ -4,12 +4,9 @@
 // Home page
 Route::get('/', function () {
     // It is ordered by id DESC so it displays the newest at the top and the oldest at the bottom of the posts
-    $sql = "select *,(select count(*) from comments,posts where comments.FK_id = posts.id)as num from posts order by id DESC";
+    // Count how many comments there are for each post
+    $sql = "select *,(select count(*) from comments where comments.FK_id = posts.id) as num from posts order by id DESC";
     $posts = DB::select($sql);
-
-    // /* Count comments */
-    // $count = "select *,(select count(*) from comments,posts where comments.FK_id = posts.id) as num from comments order by FK_id DESC";
-    // $comments = DB::select($count);
 
     // Icon image 
     $icon = asset('/images/user1.jpg');
@@ -31,12 +28,15 @@ Route::get('doc', function () {// Comments image
 Route::get('recent', function () {
     // Set the defult timezone as QLD
     date_default_timezone_set('Australia/Queensland');
+
     // Get posts from the last 7 days
     $now = date('Y-m-d');
     $currentDate = strtotime($now);
     $lastWeek = strtotime("-7 day", $currentDate);
     $endDate = date('Y-m-d', $lastWeek);
+
     // Get posts that are between currentDate and endDate ordered by newest to oldest
+    // Count how many comments there are for each post
     $sql = "select * from posts where date between '$endDate' and '$now' order by id DESC";
     $posts = DB::select($sql);
 
@@ -46,6 +46,7 @@ Route::get('recent', function () {
     $dots = asset('/images/dots.png');
     // Comments image
     $com = asset('/images/comments.png');
+    
     return view('recent')->with('posts', $posts)->with('icon', $icon)->with('dots', $dots)->with('com', $com);
 });
 
@@ -79,14 +80,6 @@ function get_post($id) {
     $posts = DB::select($sql, array($id));
     return $posts;
 };
-
-// Get post function
-function get_count_comment($id) { 
-    $sql = "select count(comment_id) as num from posts,comments where FK_id=?";
-    $comments = DB::select($sql, array($id));
-    return $comments;
-};
-
 
 // Adding posts
 Route::post('add_post', function () {

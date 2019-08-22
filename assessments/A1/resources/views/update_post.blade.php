@@ -18,38 +18,41 @@
         </div>
     </div>
 
-    <h1>Update Post</h1>
-
     <div class="posts">
-    @foreach($posts as $post)
-      @if ($post)
+      <h1>Update Post</h1>
 
-        <form method="post" action=" {{url("update_post_action")}} ">
-            {{csrf_field()}}
-            <input type="hidden" name="id" value="{{ $post->id }}">
-            <p>
-                <label>Name: </label>
-                <input type="text" name="name" value="{{ $post->name }}"> 
-            </p>
-            <p>
-                <label>Title: </label>
-                <input type="text" name="title" value="{{ $post->title }}"> 
-            </p>
-            <p>
-                <label>Message:</label>
-                <textarea name="message">{{ $post->message }}</textarea>
-            </p>
+      <div class="edit">
+      @foreach($posts as $post)
+        @if ($post)
 
-            <label name="id">{{$post->id}}</label>
-            
-            <input type="submit" value="Update post"> 
-        </form>
+          <form method="post" action=" {{url("update_post_action")}} ">
+              {{csrf_field()}}
+              <input type="hidden" name="id" value="{{ $post->id }}">
+              <p>
+                  <label>Name: </label>
+                  <input type="text" name="name" value="{{ $post->name }}"> 
+              </p>
+              <p>
+                  <label>Title: </label>
+                  <input type="text" name="title" value="{{ $post->title }}"> 
+              </p>
+              <p>
+                  <label>Message:</label>
+                  <textarea name="message">{{ $post->message }}</textarea>
+              </p>
 
-        @else
-        <p>No results found.</p>
-      @endif
-    @endforeach
+              <label name="id">{{$post->id}}</label>
+              
+              <p>
+                <input type="submit" value="Update Post">
+              </p>
+          </form>
 
+          @else
+          <p>No results found.</p>
+        @endif
+      @endforeach
+      </div>
     </div>
 
 @endsection

@@ -26,9 +26,8 @@
 
   @foreach($posts as $post)
     @if ($post)
-      <div class="display">
+      <div class="display3">
         <a href="{{url("usersPosts/$post->name")}}">{{$post->name}}</a>
-        Has made ___ posts.
       </div>
     @else
       <p>No results found.</p>

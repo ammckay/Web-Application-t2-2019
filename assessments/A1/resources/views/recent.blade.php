@@ -41,7 +41,7 @@
 
               <hr>
 
-                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40"></a><br>
+                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40">{{$post->num}}</a><br>
             </div>
           </div> 
 

@@ -47,7 +47,9 @@
         <label>Message:</label>
         <textarea type="text" name="message"></textarea>
       </p>
-      <input type="submit" value="Add Post">
+      <p>
+        <input type="submit" value="Add Post">
+      </p>
       </form>
 
     </div>
@@ -74,7 +76,7 @@
 
               <hr>
               
-                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40"> {{$post->num}}</a><br>
+                <a href="{{url("comments/$post->id")}}"><img src="{{$com}}" alt="User Icon" width="45" height="40">{{$post->num}}</a><br>
                
             </div>
           </div> 

@@ -36,7 +36,10 @@
     user can change the name, title, and message of the post, and once user has finished editting,
     the comments page for that post displays.  Deleting the post also deletes every comment for 
     that post.  Each post has a comments page where comments can be added or deleted, with each 
-    comment having a name and a message.<br>
+    comment having a name and a message.  There is a page, under Unique, that displays all the names
+    of people who have posted on the timeline, and if they have posted more than once their name is 
+    still only displayed once.  When the name is clicked it displays all of their posts.  There is 
+    another page called Recent, which display every post from the last 7 days.<br>
     Interesting approaches and anything extra implemented ...
 
   </div>
