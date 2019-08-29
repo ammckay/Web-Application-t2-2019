@@ -40,6 +40,7 @@
     of people who have posted on the timeline, and if they have posted more than once their name is 
     still only displayed once.  When the name is clicked it displays all of their posts.  There is 
     another page called Recent, which display every post from the last 7 days.<br>
+    TALK ABOUT SECURITY MEASURES IMPLEMENTED
     Interesting approaches and anything extra implemented ...
 
   </div>
