@@ -50,14 +50,16 @@
 
         <!-- Add New Comment Form -->
         <form action="{{url("add_comment/{id}")}}" method="post"> 
+          <!-- Laravel function that guards against cross-site request forgery attacks -->
           {{ csrf_field() }}
           <p>
             <label>Name:</label>
-            <input type="text" name="name">
+            <!-- required sttribute specifies that the input field cannot be left blank when submitting the form -->
+            <input type="text" name="name" required>
           </p>
           <p>
             <label>Comment:</label>
-            <textarea type="text" name="comment"></textarea>
+            <textarea type="text" name="comment" required></textarea>
           </p>
           <p>
           @foreach($posts as $post)

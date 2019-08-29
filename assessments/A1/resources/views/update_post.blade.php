@@ -29,19 +29,22 @@
         @if ($post)
 
           <form method="post" action=" {{url("update_post_action")}} ">
+              <!-- Laravel function that guards against cross-site request forgery attacks -->
               {{csrf_field()}}
+              
               <input type="hidden" name="id" value="{{ $post->id }}">
               <p>
                   <label>Name: </label>
-                  <input type="text" name="name" value="{{ $post->name }}"> 
+                  <!-- required sttribute specifies that the input field cannot be left blank when submitting the form -->
+                  <input type="text" name="name" value="{{ $post->name }}" required> 
               </p>
               <p>
                   <label>Title: </label>
-                  <input type="text" name="title" value="{{ $post->title }}"> 
+                  <input type="text" name="title" value="{{ $post->title }}" required> 
               </p>
               <p>
                   <label>Message:</label>
-                  <textarea name="message">{{ $post->message }}</textarea>
+                  <textarea name="message" required>{{ $post->message }}</textarea>
               </p>
 
               <label name="id" class="hide">{{$post->id}}</label>
