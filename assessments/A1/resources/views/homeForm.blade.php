@@ -34,7 +34,7 @@
       
       <p>
         <label>Name:</label>
-        <!-- required sttribute specifies that the input / textarea field cannot be left blank when submitting the form -->
+        <!-- required attribute specifies that the input / textarea field cannot be left blank when submitting the form -->
         <input type="text" name="name" required>
       </p>
       <p>

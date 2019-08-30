@@ -35,7 +35,7 @@
               <input type="hidden" name="id" value="{{ $post->id }}">
               <p>
                   <label>Name: </label>
-                  <!-- required sttribute specifies that the input field cannot be left blank when submitting the form -->
+                  <!-- required attribute specifies that the input field cannot be left blank when submitting the form -->
                   <input type="text" name="name" value="{{ $post->name }}" required> 
               </p>
               <p>
