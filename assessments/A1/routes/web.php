@@ -137,14 +137,14 @@ Route::get('delete_post/{id}', function ($id) {
     $comments = delete_post_comment($id);
     return redirect(url("/"))->with('posts', $posts)->with('comments', $comments);
 });
-// Delete the post
+// Delete the post function
 function delete_post($id) {
     // Delete from table where id is equal to selected
     $sql = "delete from posts where id = ?"; 
     // Delete from database
     DB::delete($sql, array($id));
 }
-// Delete the comments for the post being deleted
+// Delete the comments for the post function
 function delete_post_comment($id) {
     // Delete from comments table where FK_id is equal to the placeholder
     $sql = "delete from comments where FK_id = ?"; 
