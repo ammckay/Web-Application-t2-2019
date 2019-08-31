@@ -42,6 +42,8 @@
     their posts.  There is another page called Recent, which displays every post from the last 7 days.  This 
     was done by getting the current date, then calculating 7 days ago from the current date and adding them into 
     the SQL query to get the posts with the dates between current and 7 days ago.
+    Unfortunately when a comment is deleted, it redirects back to the home page instead of reloading the comment 
+    page, which I would of preferred.
     
     <br><br>
 

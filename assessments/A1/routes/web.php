@@ -170,7 +170,6 @@ Route::post('update_post_action', function () {
     $id = update_post($name, $title, $message, $FK_id);
     //Redirects to the post's comments page when post updated
     return redirect(url("comments/{$FK_id}"));
-    
 });
 function update_post($name, $title, $message, $FK_id ) {
     // Update the posts table column where id is equal to FK_id
