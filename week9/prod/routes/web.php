@@ -19,18 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
-Route::get('/test', function () {
-    // $products = App\Manufacturer::find(1)->products;
-    // dd($products);
+Auth::routes();
 
-    // $manufacturer = Product::find(1)->manufacturer;
-    // dd($manufacturer);
-
-    // $products = Product::all();
-    // foreach ($products as $product) { 
-    //     echo $product->name;
-    // }
-
-    // $product = Product::find(1);
-});*/
+Route::get('/home', 'HomeController@index')->name('home');

@@ -37,6 +37,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'price' => 'required|numeric', 
+            'manufacturer' =>'exists:manufacturers,id'
+        ]);
         $product = new Product();
         $product->name = $request->name;
         $product->price = $request->price; 
