@@ -7,6 +7,7 @@
     <p>{{$product->price}}</p> 
     <p>{{$product->manufacturer->name}}</p>
     <p><a href='{{url("product/$product->id/edit")}}'>Edit</a></p> 
+    <p><a href='{{url("product")}}'>Home</a></p> 
     <p>
         <form method="POST" action= '{{url("product/$product->id")}}'> 
             {{csrf_field()}}
