@@ -8,6 +8,12 @@ use App\Manufacturer;
 
 class ProductController extends Controller
 {
+    // If not logged in, cannot view create and edit pages
+    public function __construct() { 
+        $this->middleware('auth', ['only'=>'create']);
+        $this->middleware('auth', ['only'=>'edit']);
+    }
+
     /**
      * Display a listing of the resource.
      *
