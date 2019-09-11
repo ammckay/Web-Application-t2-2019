@@ -83,6 +83,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            // gte:0  for the price cannot be a negative number
+            'price' => 'required|numeric|gte:0', 
+            'manufacturer' =>'exists:manufacturers,id'
+        ]);
+
         $product = Product::find($id);
         $product->name = $request->name;
         $product->price = $request->price; 
