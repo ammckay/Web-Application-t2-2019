@@ -11,7 +11,7 @@
 |
 */
 
-Use App\Product;
+use App\Product;
 
 Route::resource('product', 'ProductController');
 

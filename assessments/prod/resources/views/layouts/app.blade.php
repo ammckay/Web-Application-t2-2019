@@ -38,6 +38,10 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Go to products page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href='{{url("product")}}'>Products Page</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

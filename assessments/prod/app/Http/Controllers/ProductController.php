@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-Use App\Product;
-Use App\Restaurant;
+use App\Product;
+use App\Manufacturer;
 
 class ProductController extends Controller
 {
@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create_form')->with('restaurants', Restaurant::all());
+        return view('products.create_form')->with('manufacturers', Manufacturer::all());
     }
 
     /**
@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->price = $request->price; 
-        $product->restaurant_id = $request->restaurant; 
+        $product->manufacturer_id = $request->manufacturer; 
         $product->save();
         return redirect("product/$product->id");
     }
@@ -77,7 +77,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('products.edit_form')->with('product', $product)->with('restaurants', Restaurant::all());
+        return view('products.edit_form')->with('product', $product)->with('manufacturers', Manufacturer::all());
     }
 
     /**
@@ -95,11 +95,11 @@ class ProductController extends Controller
             'price' => 'required|numeric|gte:0', 
             'manufacturer' =>'exists:manufacturers,id'
         ]);
-        
+
         $product = Product::find($id);
         $product->name = $request->name;
         $product->price = $request->price; 
-        $product->restaurant_id = $request->restaurant; 
+        $product->manufacturer_id = $request->manufacturer; 
         $product->save();
         return redirect("product/$product->id");
     }

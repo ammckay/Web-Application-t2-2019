@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $fillable = ['name', 'price'];
 
-    function restaurant() {
-        return $this->belongsTo('App\Restaurant');
+    function manufacturer() {
+        return $this->belongsTo('App\Manufacturer');
     }
 }
