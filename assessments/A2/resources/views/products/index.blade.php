@@ -10,7 +10,7 @@
 
     <ul>
         @foreach ($manufacturers as $manufacturer)
-            <a href="product/{{ $manufacturer->id }}"><li>{{ $manufacturer->name }}</li></a>
+            <a href="{{ url("product/prod", $manufacturer->id) }}"><li>{{ $manufacturer->name }}</li></a>
         @endforeach
     </ul> 
 

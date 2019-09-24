@@ -3,8 +3,7 @@
     Welcome 
 @endsection 
 @section('content')
-    <ul>
-        Welcome Page!
-    </ul> 
-    <h1><a href="{{url("product")}}">Restaurants</a></h1>
+    <h1>Welcome Page!</h1>
+<br>
+    <h3><a href="{{url("product")}}">Restaurants</a></h3>
 @endsection

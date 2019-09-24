@@ -4,9 +4,10 @@
 @endsection 
 @section('content')
 
-    <h1>{{$product->name}}</h1>
-    <p>{{$product->price}}</p> 
-    <p>{{$product->manufacturer->name}}</p>
+    <h1>{{$product->manufacturer->name}}</h1>
+    <h2>{{$product->name}}</h2>
+    <p>Price: {{$product->price}}</p> 
+    <img src="{{url($product->image)}}" alt="product image" style="width:300px;height:300px;">
     
     <p><a href='{{url("product")}}'>Home</a></p> 
     

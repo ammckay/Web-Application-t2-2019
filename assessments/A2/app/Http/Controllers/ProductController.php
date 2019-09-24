@@ -52,17 +52,23 @@ class ProductController extends Controller
             'price' => 'required|numeric|gte:0', 
             'manufacturer' =>'exists:manufacturers,id'
         ]);
+
+        $image_store = request()->file('image')->store('products_images', 'public');
+
         $product = new Product();
         $product->name = $request->name;
         $product->price = $request->price; 
         $product->manufacturer_id = $request->manufacturer; 
+        $product->image = $image_store;
         $product->save();
         return redirect("product/$product->id");
     }
 
-    public function item($id) {
-        $product = Product::find($id);
-        return view('products.item')->with('product', $product);
+    public function prod($id) {
+        $manufacturer = Manufacturer::find($id);
+        // Products where the manufacturer_id = manufacturer id, paginate 4 products
+        $products = Product::where('manufacturer_id',$id)->paginate(4);
+        return view('products.prod')->with('products', $products)->with('manufacturer', $manufacturer);
     }
 
     /**
@@ -73,10 +79,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $manufacturer = Manufacturer::find($id);
-        // Products where the manufacturer_id = manufacturer id, paginate 4 products
-        $products = Product::where('manufacturer_id',$id)->paginate(4);
-        return view('products.prod')->with('products', $products)->with('manufacturer', $manufacturer);
+        $manufacturers = Manufacturer::all();
+        $product = Product::find($id);
+        return view('products.item')->with('product', $product)->with('manufacturers', $manufacturers);
     }
 
     

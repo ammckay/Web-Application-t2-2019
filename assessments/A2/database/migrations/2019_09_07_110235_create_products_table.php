@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name'); 
             $table->float('price'); 
             $table->integer('manufacturer_id'); 
+            $table->string('image');
             $table->timestamps();
         });
     }

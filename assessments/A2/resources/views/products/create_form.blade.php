@@ -5,7 +5,7 @@
 @section('content')
     <h1>Create a new Product</h1>
     
-    <form method="POST" action='{{url("product")}}'>
+    <form method="POST" action='{{url("product/item")}}' enctype="multipart/form-data">
         {{csrf_field()}}
         <p><label>Name: </label>
         <input type="text" name="name" value="{{ old('name') }}"> {{$errors->first('name')}} </p> 
@@ -20,6 +20,12 @@
             @endif
         @endforeach
         </select></p>
+
+        <!-- Image -->
+        <p><input type="file" name="image"></p>
+
         <input type="submit" value="Create">
+
+        
     </form> 
 @endsection
