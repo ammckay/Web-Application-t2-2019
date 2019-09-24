@@ -38,10 +38,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">  
-                        <!-- Go to product page -->
-                        <li class="nav-item">
-                            <a class="nav-link" href='{{url("product")}}'>Products Page</a>
-                        </li>
                         <!-- Go to order page -->
                         <li class="nav-item">
                             <a class="nav-link" href='{{url("order")}}'>Orders Page</a>

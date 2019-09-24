@@ -15,10 +15,7 @@ class ProductController extends Controller
         $this->middleware('checkrole', ['only'=>'edit']);
     }
 
-    public function item() {
-        return view('products.item');
-    }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -63,6 +60,11 @@ class ProductController extends Controller
         return redirect("product/$product->id");
     }
 
+    public function item($id) {
+        $product = Product::find($id);
+        return view('products.item')->with('product', $product);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -71,8 +73,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show')->with('product', $product);
+        $manufacturer = Manufacturer::find($id);
+        // Products where the manufacturer_id = manufacturer id, paginate 4 products
+        $products = Product::where('manufacturer_id',$id)->paginate(4);
+        return view('products.prod')->with('products', $products)->with('manufacturer', $manufacturer);
     }
 
     

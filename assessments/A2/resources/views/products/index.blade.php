@@ -3,15 +3,15 @@
     Products 
 @endsection 
 @section('content') 
-    <!-- Create a new product -->
-    <h1><a href="{{url("product/create")}}">Create</a></h1>
     
     <ul>
-        @foreach ($products as $product)
-            <a href="product/{{$product->id}}"><li>{{ $product->name }}</li></a>
-        @endforeach
+        Welcome 
+    </ul> 
 
-        {{ $products->links() }}
+    <ul>
+        @foreach ($manufacturers as $manufacturer)
+            <a href="product/{{ $manufacturer->id }}"><li>{{ $manufacturer->name }}</li></a>
+        @endforeach
     </ul> 
 
 @endsection

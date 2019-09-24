@@ -20,7 +20,15 @@ class ManufacturersTableSeeder extends Seeder
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]); 
         DB::table('manufacturers')->insert([
-            'name' => 'Moo Moos',
+            'name' => 'Moo Moo',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]); 
+        DB::table('manufacturers')->insert([
+            'name' => 'Pizza Hut',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]); 
+        DB::table('manufacturers')->insert([
+            'name' => 'Gemelli',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]); 
     }

@@ -12,39 +12,153 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name' => 'Grilled Chicken Burger',
+            'name' => 'Crispy Bacon and Cheese Burger',
             'price' => '13',
             'manufacturer_id' => 1,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
-            'name' => 'Southern Chicken Burger',
+            'name' => 'Caesers Palace Burger',
+            'price' => '13',
+            'manufacturer_id' => 1,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Baa Baa Burger',
             'price' => '14',
             'manufacturer_id' => 1,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
-            'name' => 'Pizza',
+            'name' => 'Sir Truffle Burger',
+            'price' => '16',
+            'manufacturer_id' => 1,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Chips',
+            'price' => '4',
+            'manufacturer_id' => 1,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Foccacia Garlic',
+            'price' => '11',
+            'manufacturer_id' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Fettuccini Princess',
+            'price' => '31',
+            'manufacturer_id' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Spaghetti Meatballs',
+            'price' => '26',
+            'manufacturer_id' => 2,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Margherita',
             'price' => '15',
             'manufacturer_id' => 2,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
-            'name' => 'Pasta',
-            'price' => '10',
+            'name' => 'Sticky Date Pudding',
+            'price' => '13',
             'manufacturer_id' => 2,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
-            'name' => 'Steak',
-            'price' => '21',
+            'name' => 'Bang Bang Duck',
+            'price' => '24',
             'manufacturer_id' => 3,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
-            'name' => 'Pulled Pork',
-            'price' => '19',
+            'name' => 'Beef Burger',
+            'price' => '22',
             'manufacturer_id' => 3,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Pork Belly',
+            'price' => '39',
+            'manufacturer_id' => 3,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Skin on Fries',
+            'price' => '9',
+            'manufacturer_id' => 3,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Almond and Orange Cake',
+            'price' => '16',
+            'manufacturer_id' => 3,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Hawaiian',
+            'price' => '14',
+            'manufacturer_id' => 4,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Butchers Block',
+            'price' => '17',
+            'manufacturer_id' => 4,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'BBQ Cheeseburger',
+            'price' => '17',
+            'manufacturer_id' => 4,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Honey Soy Wings',
+            'price' => '9',
+            'manufacturer_id' => 4,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Hersheys Cookie',
+            'price' => '8',
+            'manufacturer_id' => 4,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Garlic Focaccia',
+            'price' => '19',
+            'manufacturer_id' => 5,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Calamari Alla Griglia',
+            'price' => '29',
+            'manufacturer_id' => 5,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Roma',
+            'price' => '28',
+            'manufacturer_id' => 5,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Spaghetti Alla Carbonara',
+            'price' => '37',
+            'manufacturer_id' => 5,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Nutella Bomba',
+            'price' => '23',
+            'manufacturer_id' => 5,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
     }
