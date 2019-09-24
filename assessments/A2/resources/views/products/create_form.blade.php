@@ -4,17 +4,7 @@
 @endsection 
 @section('content')
     <h1>Create a new Product</h1>
-
-    <!-- @if (count($errors) > 0)
-        <div class="alert"> 
-            <ul>
-                @foreach ($errors->all() as $error) 
-                <li>{{ $error }}</li>
-                @endforeach 
-            </ul>
-        </div>
-    @endif -->
-
+    
     <form method="POST" action='{{url("product")}}'>
         {{csrf_field()}}
         <p><label>Name: </label>

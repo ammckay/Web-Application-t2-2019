@@ -11,14 +11,19 @@
 |
 */
 
+use App\User;
 use App\Product;
+use App\Manufacturer;
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('item', 'ProductController@item')->name('item');
 
 Route::resource('product', 'ProductController');
+Route::resource('manufacturer', 'ManufacturerController');
+Route::resource('order', 'OrderController');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

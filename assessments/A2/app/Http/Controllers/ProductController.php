@@ -10,8 +10,13 @@ class ProductController extends Controller
 {
     // If not logged in, cannot view create and edit pages
     public function __construct() { 
-        $this->middleware('auth', ['only'=>'create']);
-        $this->middleware('auth', ['only'=>'edit']);
+        // Only users who are a Restaurant user can view the create and edit pages
+        $this->middleware('checkrole', ['only'=>'create']);
+        $this->middleware('checkrole', ['only'=>'edit']);
+    }
+
+    public function item() {
+        return view('products.item');
     }
 
     /**
@@ -21,8 +26,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index')->with('products', $products);
+        // Display 5 products per link
+        $products = Product::paginate(5);
+        $manufacturers = Manufacturer::all();
+        return view('products.index')->with('products', $products)->with('manufacturers', $manufacturers);
     }
 
     /**
@@ -68,6 +75,7 @@ class ProductController extends Controller
         return view('products.show')->with('product', $product);
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -116,4 +124,5 @@ class ProductController extends Controller
         $product->delete();
         return redirect("product");
     }
+
 }

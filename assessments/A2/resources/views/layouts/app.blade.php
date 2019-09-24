@@ -37,10 +37,18 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Go to products page -->
+                    <ul class="navbar-nav ml-auto">  
+                        <!-- Go to product page -->
                         <li class="nav-item">
                             <a class="nav-link" href='{{url("product")}}'>Products Page</a>
+                        </li>
+                        <!-- Go to order page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href='{{url("order")}}'>Orders Page</a>
+                        </li>
+                        <!-- Go to order page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href='#'>Cart</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
@@ -59,6 +67,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <!-- Display if logged in user is a Restaurant or Consumer -->
+                                    <a class="dropdown-item"> {!! auth()->user()->isRestaurant == 1 ? 'Restaurant' : 'Consumer' !!} User </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -71,6 +83,7 @@
                                 </div>
                             </li>
                         @endguest
+                        
                     </ul>
                 </div>
             </div>

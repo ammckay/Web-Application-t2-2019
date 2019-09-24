@@ -11,6 +11,25 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <!-- User select if they are a Consumer or Restaurant -->
+                        <div class="form-group row">
+                            <label for="isRestaurant" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="isRestaurant">
+                                    <option value="0">Consumer</option>
+                                    <option value="1">Restaurant</option>
+                                </select>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- User input their name -->
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -25,6 +44,7 @@
                             </div>
                         </div>
 
+                        <!-- User input their email -->
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -39,6 +59,7 @@
                             </div>
                         </div>
 
+                        <!-- User input their password -->
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -53,6 +74,7 @@
                             </div>
                         </div>
 
+                        <!-- User confirm their password -->
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
