@@ -8,7 +8,7 @@
     <p>Name: {{$order->user_name}}</p>
     <p>Dish: {{$order->product_name}}</p>
     <p>Price: ${{$order->price}}</p> 
-    <p>Address: {{$order->user_address}}</p>
+    <p>Address: {{$order->address}}</p>
     
     <p><a href='{{url("product")}}'>Restaurants</a></p> 
 
