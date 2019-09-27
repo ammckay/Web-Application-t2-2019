@@ -3,7 +3,7 @@
     Order Placed 
 @endsection 
 @section('content')
-    <h1>Your order has been placed.</h1>
+    <h1>Your order has been placed at {{ $order->manufacturer->name }}.</h1>
 
     <p>Name: {{$order->user_name}}</p>
     <p>Dish: {{$order->product_name}}</p>

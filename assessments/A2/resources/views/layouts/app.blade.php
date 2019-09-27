@@ -42,10 +42,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url("product")}}">Restaurants</a>
                         </li>
-                        <!-- Go to order page -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url("order")}}">Orders</a>
-                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -57,6 +53,14 @@
                                 </li>
                             @endif
                         @else
+                            <!-- Display orders link if user is a restaurant user -->
+                            @if(Auth::user()->isRestaurant == 1)
+                            <!-- Go to order page -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url("order")}}">Orders</a>
+                            </li>
+                            @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

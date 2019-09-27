@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('product_name'); 
             $table->string('price'); 
             $table->string('address'); 
+            $table->integer('manufacturer_id'); 
             $table->timestamps();
         });
     }

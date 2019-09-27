@@ -16,6 +16,7 @@ class OrdersTableSeeder extends Seeder
             'product_name' => 'Crispy Bacon and Cheese Burger',
             'price' => '13',
             'address' => "127 Tee Trees Boulevard, Arundel QLD",
+            'manufacturer_id' => 1,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
         DB::table('orders')->insert([
@@ -23,6 +24,7 @@ class OrdersTableSeeder extends Seeder
             'product_name' => 'Caesers Palace Burger',
             'price' => '13',
             'address' => "24 Ocean Street, Runaway Bay QLD",
+            'manufacturer_id' => 1,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP')
         ]);
     }

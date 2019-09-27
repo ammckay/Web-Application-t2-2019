@@ -47,6 +47,7 @@ class OrderController extends Controller
         $order->product_name = $request->product_name;
         $order->price = $request->price; 
         $order->address = $request->address; 
+        $order->manufacturer_id = $request->manufacturer; 
         $order->save();
         return redirect("order/$order->id");
     }

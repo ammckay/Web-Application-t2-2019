@@ -30,14 +30,17 @@
     @if (Auth::user()->isRestaurant == 0)
     <form method="POST" action='{{url("order")}}'>
         {{csrf_field()}}
+        <!-- The information is hidden from the user and can only view the button -->
         <!-- user_name -->
-        <p><input type="text" name="user_name" value="{{ Auth::user()->name }}">  </p> 
+        <p><input type="hidden" name="user_name" value="{{ Auth::user()->name }}">  </p> 
         <!-- product_name -->
-        <p><input type="text" name="product_name" value="{{ $product->name }}">  </p> 
+        <p><input type="hidden" name="product_name" value="{{ $product->name }}">  </p> 
         <!-- price -->
-        <p><input type="text" name="price" value="{{ $product->price }}">  </p> 
+        <p><input type="hidden" name="price" value="{{ $product->price }}">  </p> 
         <!-- price -->
-        <p><input type="text" name="address" value="{{ Auth::user()->address }}">  </p> 
+        <p><input type="hidden" name="address" value="{{ Auth::user()->address }}">  </p> 
+        <!-- manufacturer -->
+        <p><input type="hidden" name="manufacturer" value="{{ $product->manufacturer_id }}">  </p> 
 
         <input type="submit" value="Purchase">
     </form> 

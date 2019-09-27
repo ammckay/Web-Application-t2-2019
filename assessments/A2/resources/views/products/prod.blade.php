@@ -6,8 +6,9 @@
 
     <ul>
     @foreach ($products as $product)
-        <li><a href="{{ url("product", $product->id) }}">{{$product->name}}</a></li>
+        <li><a href="{{ url("product", $product->id) }}">{{ $product->name }}</a></li>
     @endforeach
     {{ $products->links()}}
     </ul> 
+    
 @endsection

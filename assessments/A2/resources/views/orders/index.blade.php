@@ -8,6 +8,7 @@
 
     <table style="width:90%">
         <tr>
+            <th> Restaurants  </th>
             <th> User Name </th>
             <th> Product Name </th>
             <th> Product Price </th>
@@ -15,6 +16,7 @@
         </tr>
         @foreach ($orders as $order)
             <tr>
+                <td> {{ $order->manufacturer->name }}  </td>
                 <td> {{ $order->user_name }}  </td>
                 <td> {{ $order->product_name }}  </td>
                 <td> ${{ $order->price }}  </td>
