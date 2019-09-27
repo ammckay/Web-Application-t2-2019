@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'isRestaurant','name', 'email', 'password',
+        'isRestaurant','name', 'address', 'email', 'password',
     ];
 
     /**
@@ -37,11 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    function products() {
+    function product() {
         return $this->belongsToMany('App\Product');
     }
 
-    function orders() {
-        return $this->belongsToMany('App\Orders');
+    function order() {
+        return $this->belongsToMany('App\Order', 'user_id');
     }
 }

@@ -28,12 +28,11 @@
 
     <!-- If the user is a Consumer (0) user they can see the edit and delete link -->
     @if (Auth::user()->isRestaurant == 0)
-        <p>Purchase</p> 
-        <form method="POST" action= '{{url("product/$product->id")}}'> 
-                {{csrf_field()}}
-                <input type="submit" value="Order">
-        </form> 
+    <form method="POST" action='{{url("order")}}'>
+        {{csrf_field()}}
+        <input type="text" name="product_id" value="{{ $product->id }}">  </p> 
+        <input type="submit" value="Create">
+    </form> 
     @endif
 
-    
 @endsection

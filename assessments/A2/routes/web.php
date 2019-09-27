@@ -19,6 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route for displaying the individual products
 Route::get('product/prod/{id}', 'ProductController@prod')->name('prod');
 
+// Controllers
 Route::resource('product', 'ProductController');
 Route::resource('order', 'OrderController');
 

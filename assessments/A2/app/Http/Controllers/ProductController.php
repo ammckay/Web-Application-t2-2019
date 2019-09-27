@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Manufacturer;
+use App\Order;
 
 class ProductController extends Controller
 {
@@ -48,7 +49,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:products,name',
             'price' => 'required|numeric|gte:0', 
             'manufacturer' =>'exists:manufacturers,id'
         ]);

@@ -10,13 +10,10 @@
         <tr>
             <th> User Name </th>
             <th> Product Name </th>
-            <th> Quantity </th>
         </tr>
         @foreach ($orders as $order)
             <tr>
-                <td> {{ $order->user_name }} </td>
-                <td> {{ $order->product_name }} </td>
-                <td> Q{{ $order->quantity }} </td>
+                <td> {{ $order->product->name }}  </td>
             </tr>
         @endforeach
     </table> 

@@ -5,7 +5,7 @@
 @section('content')
     <h1>Create a new Product</h1>
     
-    <form method="POST" action='{{url("product/item")}}' enctype="multipart/form-data">
+    <form method="POST" action='{{url("product")}}' enctype="multipart/form-data">
         {{csrf_field()}}
         <p><label>Name: </label>
         <input type="text" name="name" value="{{ old('name') }}"> {{$errors->first('name')}} </p> 
@@ -14,9 +14,9 @@
         <p><select name="manufacturer">
         @foreach ($manufacturers as $manufacturer)
             @if($manufacturer->id == old('manufacturer'))
-                <option value="{{$manufacturer->id}}" selected="selected">{{$manufacturer->name}}</option>
+                <option value="{{ $manufacturer->id }}" selected="selected">{{ $manufacturer->name }}</option>
             @else
-                <option value="{{$manufacturer->id}}">{{$manufacturer->name}}</option>
+                <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
             @endif
         @endforeach
         </select></p>

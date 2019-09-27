@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Order;
 use App\Product;
 use App\Manufacturer;
@@ -18,7 +19,9 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $manufacturers = Manufacturer::all();
-        return view('orders.index')->with('orders', $orders)->with('manufacturers', $manufacturers);
+        $products = Product::all();
+        $users = User::all();
+        return view('orders.index')->with('orders', $orders)->with('manufacturers', $manufacturers)->with('products', $products)->with('users', $users);
     }
 
     /**
@@ -28,7 +31,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.item');
     }
 
     /**
@@ -39,7 +42,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order();
+        $order->product_id = $request->product; 
+        $order->save();
+        return redirect("order")->with('product', $product);
     }
 
     /**

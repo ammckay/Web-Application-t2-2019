@@ -11,4 +11,8 @@ class Product extends Model
     function manufacturer() {
         return $this->belongsTo('App\Manufacturer');
     }
+
+    function order() {
+        return $this->belongsToMany('App\Order', 'product_id');
+    }
 }
