@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Manufacturer;
 use App\Order;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -54,7 +55,7 @@ class ProductController extends Controller
             'manufacturer' =>'exists:manufacturers,id'
         ]);
 
-        $image_store = request()->file('image')->store('products_images', 'public');
+        $image_store = request()->file('image')->store('products_images','public');
 
         $product = new Product();
         $product->name = $request->name;
@@ -67,8 +68,8 @@ class ProductController extends Controller
 
     public function prod($id) {
         $manufacturer = Manufacturer::find($id);
-        // Products where the manufacturer_id = manufacturer id, paginate 4 products
-        $products = Product::where('manufacturer_id',$id)->paginate(4);
+        // Products where the manufacturer_id = manufacturer id, paginate 5 products
+        $products = Product::where('manufacturer_id',$id)->paginate(5);
         return view('products.prod')->with('products', $products)->with('manufacturer', $manufacturer);
     }
 
@@ -82,7 +83,9 @@ class ProductController extends Controller
     {
         $manufacturers = Manufacturer::all();
         $product = Product::find($id);
-        return view('products.item')->with('product', $product)->with('manufacturers', $manufacturers);
+        $user = User::all();
+        $order = Order::all();
+        return view('products.item')->with('product', $product)->with('manufacturers', $manufacturers)->with('user', $user)->with('order', $order);
     }
 
     

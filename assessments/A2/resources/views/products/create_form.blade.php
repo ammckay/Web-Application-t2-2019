@@ -9,9 +9,12 @@
         {{csrf_field()}}
         <p><label>Name: </label>
         <input type="text" name="name" value="{{ old('name') }}"> {{$errors->first('name')}} </p> 
+        
         <p><label>Price: </label>
         <input type="text" name="price" value="{{ old('price') }}"> {{$errors->first('price')}}  </p> 
-        <p><select name="manufacturer">
+        
+        <p><label>Restaurant : </label>
+        <select name="manufacturer">
         @foreach ($manufacturers as $manufacturer)
             @if($manufacturer->id == old('manufacturer'))
                 <option value="{{ $manufacturer->id }}" selected="selected">{{ $manufacturer->name }}</option>

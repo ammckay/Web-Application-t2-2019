@@ -43,9 +43,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = new Order();
-        $order->product_id = $request->product; 
+        $order->user_name = $request->user_name;
+        $order->product_name = $request->product_name;
+        $order->price = $request->price; 
+        $order->address = $request->address; 
         $order->save();
-        return redirect("order")->with('product', $product);
+        return redirect("order/$order->id");
     }
 
     /**
@@ -56,7 +59,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id);
+        return view('orders.show')->with('order', $order);
     }
 
     /**

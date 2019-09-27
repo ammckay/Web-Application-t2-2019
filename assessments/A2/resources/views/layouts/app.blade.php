@@ -40,7 +40,11 @@
                     <ul class="navbar-nav ml-auto"> 
                         <!-- Go to order page -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url("order")}}">Cart</a>
+                            <a class="nav-link" href="{{url("product")}}">Restaurants</a>
+                        </li>
+                        <!-- Go to order page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url("order")}}">Orders</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
