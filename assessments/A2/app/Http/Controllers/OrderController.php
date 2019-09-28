@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\User;
 use App\Order;
 use App\Product;
@@ -24,6 +25,28 @@ class OrderController extends Controller
         return view('orders.index')->with('orders', $orders)->with('manufacturers', $manufacturers)->with('products', $products)->with('users', $users);
     }
 
+    public function top() {
+        // Get names of the top 5 of the most ordered dishes in the last 30 days, ordered by date added in ascending
+        $top = Order::select('product_name')
+                            ->selectRaw('COUNT(*) as c')
+                            ->groupby('product_name')
+                            ->orderby('c', 'desc')
+                            ->limit(5)
+                            ->whereDate('updated_at','>',Carbon::now()->subDays(30))
+                            ->get();
+
+        return view('orders.top')->with('top', $top);
+    }  
+
+    public function statistic() {
+        // Get names of the top 5 of the most ordered dishes in the last 30 days, ordered by date added in ascending
+        $sum = Order::select('price')
+                            ->selectRaw('SUM(price) as total')
+                            ->get();
+
+        return view('orders.statistic')->with('sum', $sum);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

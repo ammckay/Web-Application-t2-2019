@@ -38,9 +38,17 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto"> 
-                        <!-- Go to order page -->
+                        <!-- Go to restaurants page -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{url("product")}}">Restaurants</a>
+                        </li>
+                        <!-- Go to top 5 most orders page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url("order/top")}}">Top Orders</a>
+                        </li>
+                        <!-- Go to top 5 most orders page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url("product/doc")}}">Documentation</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
@@ -53,20 +61,20 @@
                                 </li>
                             @endif
                         @else
-                            <!-- Display orders link if user is a restaurant user -->
-                            @if(Auth::user()->isRestaurant == 1)
-                            <!-- Go to order page -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url("order")}}">Orders</a>
-                            </li>
-                            @endif
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <!-- Display orders link if user is a restaurant user -->
+                                    @if(Auth::user()->isRestaurant == 1)
+                                    <!-- Go to statistic page -->
+                                        <a class="dropdown-item" href="{{url("order")}}">Orders</a>
+                                    <!-- Go to order page -->
+                                        <a class="dropdown-item" href="{{url("order/statistic")}}">Statistic</a>
+                                    @endif
 
                                     <!-- Display if logged in user is a Restaurant or Consumer -->
                                     <a class="dropdown-item"> {!! auth()->user()->isRestaurant == 1 ? 'Restaurant' : 'Consumer' !!} User </a>

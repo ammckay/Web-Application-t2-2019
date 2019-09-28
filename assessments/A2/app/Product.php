@@ -13,6 +13,6 @@ class Product extends Model
     }
 
     function order() {
-        return $this->belongsToMany('App\Order', 'product_id');
+        return $this->belongsToMany('App\Order');
     }
 }

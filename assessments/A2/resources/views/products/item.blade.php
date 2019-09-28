@@ -4,17 +4,17 @@
 @endsection 
 @section('content')
 
-    <h1>{{$product->manufacturer->name}}</h1>
-    <h2>{{$product->name}}</h2>
-    <p>Price: ${{$product->price}}</p> 
-    <img src="{{url($product->image)}}" alt="product image" style="width:300px;height:300px;">
+    <h1>{{ $product->manufacturer->name }}</h1>
+    <h2>{{ $product->name }}</h2>
+    <p>Price: ${{ $product->price }}</p> 
+    <img src="{{ url($product->image) }}" alt="product image" style="width:300px;height:300px;">
     
-    <p><a href='{{url("product")}}'>Home</a></p> 
+    <p><a href='{{url("product")}}'>Restaurants</a></p> 
     
     <!-- If the user is a Restaurant (1) user they can see the edit and delete link -->
-    @if (Auth::user()->isRestaurant)
+    @if (Auth::user()->isRestaurant == 1)
         <!-- Edit the product -->
-        <p><a href='{{url("product/$product->id/edit")}}'>Edit</a></p> 
+        <p><a href='{{url("product/$product->id/edit")}}'>Edit Dish</a></p> 
 
         <!-- Delete the product -->
         <p>
@@ -30,6 +30,13 @@
     @if (Auth::user()->isRestaurant == 0)
     <form method="POST" action='{{url("order")}}'>
         {{csrf_field()}}
+        <!-- Work on get user and product like manufacturer -->
+        <!-- user -->
+        <p><input type="hidden" name="user" value="{{ Auth::user()->id }}">  </p> 
+        <!-- product -->
+        <p><input type="hidden" name="product" value="{{ $product->id }}">  </p> 
+
+
         <!-- The information is hidden from the user and can only view the button -->
         <!-- user_name -->
         <p><input type="hidden" name="user_name" value="{{ Auth::user()->name }}">  </p> 

@@ -83,9 +83,9 @@ class ProductController extends Controller
     {
         $manufacturers = Manufacturer::all();
         $product = Product::find($id);
-        $user = User::all();
+        $users = User::all();
         $order = Order::all();
-        return view('products.item')->with('product', $product)->with('manufacturers', $manufacturers)->with('user', $user)->with('order', $order);
+        return view('products.item')->with('product', $product)->with('manufacturers', $manufacturers)->with('users', $users)->with('order', $order);
     }
 
     
@@ -136,6 +136,12 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect("product");
+    }
+
+
+    public function doc()
+    {
+        return view('products.doc');
     }
 
 }
