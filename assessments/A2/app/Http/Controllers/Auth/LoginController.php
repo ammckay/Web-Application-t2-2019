@@ -50,13 +50,10 @@ class LoginController extends Controller
         return $this->redirectTo ?? '/';
     }
 
-    public function logout(Request $request) {
+    // Logout function
+    public function logout() {
         Auth::logout();
-        // Redirect the user to the previous page after logging in, the page that was collected in blade.php
-        if ($this->request->has('previous')) {
-            $this->redirectTo = $this->request->get('previous');
-        }
-
-        return $this->redirectTo ?? '/';
+        // Redirect back to the previous page 
+        return redirect()->back();
     }
 }

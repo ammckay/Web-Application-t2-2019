@@ -89,15 +89,6 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-
-                                    <!-- Section for redirecting back to the previous page -->
-                                    <div class="form-group">
-                                        @if (Request::has('previous'))
-                                            <input type="hidden" name="previous" value="{{ Request::get('previous') }}">
-                                        @else
-                                            <input type="hidden" name="previous" value="{{ URL::previous() }}">
-                                        @endif
-                                    </div>
                                 </div>
                             </li>
                         @endguest
