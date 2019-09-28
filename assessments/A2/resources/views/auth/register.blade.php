@@ -29,6 +29,28 @@
                             </div>
                         </div>
 
+                        <!-- User select their restaurant -->
+                        <div class="form-group row">
+                            <label for="manufacturer_id" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="manufacturer_id">
+                                    <option value="0">Not a Restaurant User</option>
+                                    <option value="1">Grilld</option>
+                                    <option value="2">Marios</option>
+                                    <option value="3">Moo Moo</option>
+                                    <option value="4">Pizza Hut</option>
+                                    <option value="5">Gemelli</option>
+                                </select>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <!-- User input their name -->
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

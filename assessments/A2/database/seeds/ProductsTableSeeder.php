@@ -12,6 +12,13 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
+            'name' => 'Simply Grilld',
+            'price' => '10.50',
+            'manufacturer_id' => 1,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
             'name' => 'Crispy Bacon and Cheese Burger',
             'price' => '13',
             'manufacturer_id' => 1,
@@ -34,6 +41,13 @@ class ProductsTableSeeder extends Seeder
         ]);
         DB::table('products')->insert([
             'name' => 'Sir Truffle Burger',
+            'price' => '16',
+            'manufacturer_id' => 1,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Beyond Garden Goodness',
             'price' => '16',
             'manufacturer_id' => 1,
             'image' => 'products_images/default.png',
@@ -75,6 +89,20 @@ class ProductsTableSeeder extends Seeder
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
+            'name' => 'Caesar Salad',
+            'price' => '18.90',
+            'manufacturer_id' => 2,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Lasagna and Chips',
+            'price' => '15.90',
+            'manufacturer_id' => 2,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
             'name' => 'Sticky Date Pudding',
             'price' => '13',
             'manufacturer_id' => 2,
@@ -103,6 +131,13 @@ class ProductsTableSeeder extends Seeder
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
+            'name' => 'Beef Rump',
+            'price' => '39',
+            'manufacturer_id' => 3,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
             'name' => 'Skin on Fries',
             'price' => '9',
             'manufacturer_id' => 3,
@@ -117,10 +152,16 @@ class ProductsTableSeeder extends Seeder
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
+            'name' => 'Garlic Bread',
+            'price' => '4.45',
+            'manufacturer_id' => 4,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
             'name' => 'Hawaiian',
             'price' => '14',
             'manufacturer_id' => 4,
-
             'image' => 'products_images/default.png',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
@@ -128,7 +169,6 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Butchers Block',
             'price' => '17',
             'manufacturer_id' => 4,
-
             'image' => 'products_images/default.png',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
@@ -136,12 +176,18 @@ class ProductsTableSeeder extends Seeder
             'name' => 'BBQ Cheeseburger',
             'price' => '17',
             'manufacturer_id' => 4,
-
             'image' => 'products_images/default.png',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('products')->insert([
             'name' => 'Honey Soy Wings',
+            'price' => '9',
+            'manufacturer_id' => 4,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Smoky BBQ',
             'price' => '9',
             'manufacturer_id' => 4,
             'image' => 'products_images/default.png',
@@ -157,6 +203,13 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'name' => 'Garlic Focaccia',
             'price' => '19',
+            'manufacturer_id' => 5,
+            'image' => 'products_images/default.png',
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Arancini Al Funghi',
+            'price' => '22',
             'manufacturer_id' => 5,
             'image' => 'products_images/default.png',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),

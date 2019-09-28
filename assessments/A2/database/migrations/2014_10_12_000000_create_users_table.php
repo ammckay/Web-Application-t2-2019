@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             // 1 is a Restaurant user and 0 is a Consumer user
             $table->enum('isRestaurant', [1, 0]);
+            $table->integer('manufacturer_id'); 
             $table->string('name'); 
             $table->string('address'); 
             $table->string('email')->unique(); 

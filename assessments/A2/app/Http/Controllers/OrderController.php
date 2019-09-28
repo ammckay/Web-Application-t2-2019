@@ -8,6 +8,7 @@ use App\User;
 use App\Order;
 use App\Product;
 use App\Manufacturer;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -18,7 +19,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        // Order the orders by date they were created with oldest at the top and newest at the bottom
+        $orders = Order::orderby('updated_at', 'asc')->where('manufacturer_id', Auth::user()->manufacturer_id)->get();
         $manufacturers = Manufacturer::all();
         $products = Product::all();
         $users = User::all();
@@ -42,9 +44,15 @@ class OrderController extends Controller
         // Get names of the top 5 of the most ordered dishes in the last 30 days, ordered by date added in ascending
         $sum = Order::select('price')
                             ->selectRaw('SUM(price) as total')
+                            ->where('manufacturer_id', Auth::user()->manufacturer_id)
+                            ->get();
+        
+        $weekly = Order::select('price')
+                            ->selectRaw('SUM(price) as total')
+                            ->where('manufacturer_id', Auth::user()->manufacturer_id)
                             ->get();
 
-        return view('orders.statistic')->with('sum', $sum);
+        return view('orders.statistic')->with('sum', $sum)->with('weekly', $weekly);
     }
     
     /**

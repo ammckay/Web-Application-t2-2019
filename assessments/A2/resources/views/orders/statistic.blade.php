@@ -1,3 +1,4 @@
+<!-- Statistics of restaurant user's restaurant -->
 @extends('layouts.app') 
 @section('title')
     Statistics 
@@ -17,5 +18,15 @@
     <br>
 
     <h1> Total weekly sales in the past 12 weeks. </h1> <br>
+
+    <table style="width:50%">
+    @foreach ($weekly as $week)
+        <tr>
+            <!-- Display the total amount of sales in dollars -->
+            <th> ${{ $week->total }} </th>
+        </tr>
+    @endforeach
+    </table>
+    
 
 @endsection
