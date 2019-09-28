@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -24,20 +25,31 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Create a new controller instance.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        $this->middleware('guest');
+
+        $this->request = $request;
+    }
+
+
+    /**
+     * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    public function redirectTo() {
+        // Redirect the user to the previous page after registering, the page that was collected in blade.php
+        if ($this->request->has('previous')) {
+            $this->redirectTo = $this->request->get('previous');
+        }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+        return $this->redirectTo ?? '/';
     }
 
     /**
@@ -75,4 +87,5 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
 }

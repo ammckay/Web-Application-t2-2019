@@ -21,12 +21,36 @@ class OrdersTableSeeder extends Seeder
             'updated_at' => Carbon::create('2019','09','10')
         ]);
         DB::table('orders')->insert([
+            'user_name' => "Ted",
+            'product_name' => 'Crispy Bacon and Cheese Burger',
+            'price' => '13',
+            'address' => "127 Tee Trees Boulevard, Arundel QLD",
+            'manufacturer_id' => 1,
+            'updated_at' => Carbon::create('2019','09','10')
+        ]);
+        DB::table('orders')->insert([
             'user_name' => "John",
             'product_name' => 'Caesers Palace Burger',
             'price' => '13',
             'address' => "24 Ocean Street, Runaway Bay QLD",
             'manufacturer_id' => 1,
+            'updated_at' => Carbon::create('2019','10','20')
+        ]);
+        DB::table('orders')->insert([
+            'user_name' => "John",
+            'product_name' => 'Chips',
+            'price' => '4',
+            'address' => "24 Ocean Street, Runaway Bay QLD",
+            'manufacturer_id' => 1,
             'updated_at' => Carbon::create('2019','09','09')
+        ]);
+        DB::table('orders')->insert([
+            'user_name' => "John",
+            'product_name' => 'Simply Grilld',
+            'price' => '10.50',
+            'address' => "24 Ocean Street, Runaway Bay QLD",
+            'manufacturer_id' => 1,
+            'updated_at' => Carbon::create('2019','09','13')
         ]);
         DB::table('orders')->insert([
             'user_name' => "Ted",

@@ -16,7 +16,7 @@
                             <label for="isRestaurant" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
-                                <select name="isRestaurant">
+                                <select id="user" name="isRestaurant">
                                     <option value="0">Consumer</option>
                                     <option value="1">Restaurant</option>
                                 </select>
@@ -30,7 +30,7 @@
                         </div>
 
                         <!-- User select their restaurant -->
-                        <div class="form-group row">
+                        <div id="choose" class="form-group row">
                             <label for="manufacturer_id" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant') }}</label>
 
                             <div class="col-md-6">
@@ -94,6 +94,15 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <!-- Section for redirecting back to the previous page -->
+                        <div class="form-group">
+                            @if (Request::has('previous'))
+                                <input type="hidden" name="previous" value="{{ Request::get('previous') }}">
+                            @else
+                                <input type="hidden" name="previous" value="{{ URL::previous() }}">
+                            @endif
                         </div>
 
                         <!-- User input their password -->

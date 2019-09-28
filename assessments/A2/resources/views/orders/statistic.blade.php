@@ -22,8 +22,9 @@
     <table style="width:50%">
     @foreach ($weekly as $week)
         <tr>
+            <th> ${{ $week->month }} </th>
             <!-- Display the total amount of sales in dollars -->
-            <th> ${{ $week->total }} </th>
+            <th> ${{ $week->price }} </th>
         </tr>
     @endforeach
     </table>

@@ -11,6 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
+                        <!-- User input their email -->
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -25,6 +26,16 @@
                             </div>
                         </div>
 
+                        <!-- Section for redirecting back to the previous page -->
+                        <div class="form-group">
+                            @if (Request::has('previous'))
+                                <input type="hidden" name="previous" value="{{ Request::get('previous') }}">
+                            @else
+                                <input type="hidden" name="previous" value="{{ URL::previous() }}">
+                            @endif
+                        </div>
+
+                        <!-- User input their password -->
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -39,6 +50,7 @@
                             </div>
                         </div>
 
+                        <!-- Remember me checkbox -->
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -51,12 +63,14 @@
                             </div>
                         </div>
 
+                        <!-- Login button -->
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
 
+                                <!-- Forgotten password request -->
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}

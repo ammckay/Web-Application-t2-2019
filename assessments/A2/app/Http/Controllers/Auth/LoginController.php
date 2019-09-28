@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -21,19 +23,40 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
+     * Create a new controller instance.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        $this->middleware('guest')->except('logout');
+
+        $this->request = $request;
+    }
+
+
+    /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    public function redirectTo() {
+        // Redirect the user to the previous page after logging in, the page that was collected in blade.php
+        if ($this->request->has('previous')) {
+            $this->redirectTo = $this->request->get('previous');
+        }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+        return $this->redirectTo ?? '/';
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        // Redirect the user to the previous page after logging in, the page that was collected in blade.php
+        if ($this->request->has('previous')) {
+            $this->redirectTo = $this->request->get('previous');
+        }
+
+        return $this->redirectTo ?? '/';
     }
 }
