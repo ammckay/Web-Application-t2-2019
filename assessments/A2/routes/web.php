@@ -26,6 +26,9 @@ Route::get('order/top', 'OrderController@top')->name('top');
 // Route for displaying the statistics page
 Route::get('order/statistic', 'OrderController@statistic')->name('statistic');
 
+// Route for displaying the statistics page
+Route::get('cart/order', 'CartController@order')->name('order');
+
 // Route for logout
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

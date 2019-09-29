@@ -19,7 +19,7 @@
                 <td> ${{ $cart->price }}  </td>
                 <td> 
                     <!-- Delete from cart -->
-                    <form method="POST" action= '{{url("cart/$cart->id")}}'> 
+                    <form method="POST" action='{{url("cart/$cart->id")}}'> 
                     {{csrf_field()}}
                     {{ method_field('DELETE') }}
                     <input type="submit" value="Delete Dish">
@@ -43,7 +43,6 @@
     <!-- Form to purchase a single item -->
     <form method="POST" action='{{url("order")}}'>
         {{csrf_field()}}
-        
         <input type="submit" value="Purchase">
     </form> 
 

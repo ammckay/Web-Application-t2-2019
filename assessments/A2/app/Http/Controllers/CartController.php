@@ -102,4 +102,17 @@ class CartController extends Controller
         $cart->delete();
         return redirect("cart");
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function order()
+    {
+        $cart = Cart::all();
+        $cart->purchase();
+        return redirect("order");
+    }
 }
