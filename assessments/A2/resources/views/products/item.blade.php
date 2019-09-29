@@ -4,13 +4,11 @@
 @endsection 
 @section('content')
 
-    <h1>{{ $product->manufacturer->name }}</h1>
-    <h2>{{ $product->name }}</h2>
-    <p>Price: ${{ $product->price }}</p> 
-    <img src="{{ url($product->image) }}" alt="product image" style="width:300px;height:300px;">
-    
-    <p><a href='{{url("product")}}'>Restaurants</a></p> 
-    
+    <h1> {{ $product->manufacturer->name }} </h1>
+    <h2> {{ $product->name }} </h2>
+    <p> Price: ${{ $product->price }} </p> 
+    <img src="{{ url($product->image) }}" alt="product image" style="width:200px;height:200px;"> <br>
+
     <!-- If the user is a Restaurant (1) user they can see the edit and delete link -->
     @if (Auth::user()->isRestaurant == 1)
         <!-- Edit the product -->
@@ -52,5 +50,9 @@
         <input type="submit" value="Purchase">
     </form> 
     @endif
+
+    <p><a href='{{url("product")}}'> Back to Restaurants </a></p> 
+    <p><a href="{{url("product")}}">Back to {{ $product->manufacturer->name }} Dishes </a><p>
+    
 
 @endsection

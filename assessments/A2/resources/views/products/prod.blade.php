@@ -9,6 +9,8 @@
         <li><a href="{{ url("product", $product->id) }}">{{ $product->name }}</a></li>
     @endforeach
     {{ $products->links()}}
-    </ul> 
+    </ul>  <br>
+
+    <p> <a href="{{url("product")}}">Back to Restaurants</a> <p>
     
 @endsection

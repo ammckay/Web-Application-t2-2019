@@ -49,9 +49,8 @@ class OrderController extends Controller
         
         // Weekly sale totals
         $weekly = Order::select('price')
-                            ->selectRaw('SUM(price) as total, month(updated_at) as month')
+                            ->selectRaw('SUM(price) as total')
                             ->where('manufacturer_id', Auth::user()->manufacturer_id)
-                            ->groupby('month')
                             ->get();
 
         return view('orders.statistic')->with('sum', $sum)->with('weekly', $weekly);

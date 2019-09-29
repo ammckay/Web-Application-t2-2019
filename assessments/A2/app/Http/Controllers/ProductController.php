@@ -14,7 +14,10 @@ class ProductController extends Controller
     public function __construct() { 
         // Only users who are a Restaurant user can view the create and edit pages
         $this->middleware('checkrole', ['only'=>'create']);
-        $this->middleware('checkrole', ['only'=>'edit']);
+        $this->middleware('checkrole', ['only'=>'edit']); 
+        
+        // Guest cannot view item page, if they click on link to the items page it will redirect them to login page
+        $this->middleware('auth', ['only'=>'show']);
     }
 
     

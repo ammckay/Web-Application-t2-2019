@@ -53,7 +53,7 @@ class LoginController extends Controller
     // Logout function
     public function logout() {
         Auth::logout();
-        // Redirect back to the previous page 
-        return redirect()->back();
+        // Redirect back to the welcome page 
+        return redirect('/');
     }
 }
