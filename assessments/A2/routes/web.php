@@ -32,6 +32,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 // Controllers
 Route::resource('product', 'ProductController');
 Route::resource('order', 'OrderController');
+Route::resource('cart', 'CartController');
 
 Route::get('/', function () {
     return view('welcome');

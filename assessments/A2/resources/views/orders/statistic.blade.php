@@ -19,10 +19,11 @@
 
     <h1> Total weekly sales in the past 12 weeks. </h1> <br>
 
+    
     <table style="width:50%">
     @foreach ($weekly as $week)
         <tr>
-            <th> ${{ $week->month }} </th>
+            <th> ${{ $week->updated_at->format('Y/m/d') }} </th>
             <!-- Display the total amount of sales in dollars -->
             <th> ${{ $week->price }} </th>
         </tr>

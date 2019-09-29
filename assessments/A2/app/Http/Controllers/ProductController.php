@@ -20,7 +20,6 @@ class ProductController extends Controller
         $this->middleware('auth', ['only'=>'show']);
     }
 
-    
     /**
      * Display a listing of the resource.
      *

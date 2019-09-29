@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\User;
 use App\Order;
+use App\Cart;
 use App\Product;
 use App\Manufacturer;
 use Auth;
@@ -47,9 +48,9 @@ class OrderController extends Controller
                             ->where('manufacturer_id', Auth::user()->manufacturer_id)
                             ->get();
         
-        // Weekly sale totals
-        $weekly = Order::select('price')
-                            ->selectRaw('SUM(price) as total')
+        // Weekly sale totals, Did not complete
+        $weekly = Order::select('*')
+                            ->orderby('updated_at', 'desc')
                             ->where('manufacturer_id', Auth::user()->manufacturer_id)
                             ->get();
 

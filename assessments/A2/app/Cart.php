@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Cart extends Model
 {
     function user() {
         return $this->belongsToMany('App\User');
@@ -16,9 +16,5 @@ class Order extends Model
 
     function manufacturer() {
         return $this->belongsTo('App\Manufacturer');
-    }
-
-    function cart() {
-        return $this->belongsTo('App\Cart');
     }
 }

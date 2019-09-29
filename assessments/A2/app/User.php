@@ -44,4 +44,8 @@ class User extends Authenticatable
     function order() {
         return $this->belongsToMany('App\Order', 'user_id');
     }
+
+    function cart() {
+        return $this->belongsTo('App\Cart');
+    }
 }

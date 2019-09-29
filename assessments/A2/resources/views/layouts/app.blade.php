@@ -77,6 +77,12 @@
                                         <a class="dropdown-item" href="{{url("order/statistic")}}">Statistic</a>
                                     @endif
 
+                                    <!-- Display cart link if user is a consumer -->
+                                    @if(Auth::user()->isRestaurant == 0)
+                                        <!-- Go to the cart page -->
+                                        <a class="dropdown-item" href="{{url("cart")}}">Cart</a>
+                                    @endif
+
                                     <!-- Display if logged in user is a Restaurant or Consumer -->
                                     <a class="dropdown-item"> {!! auth()->user()->isRestaurant == 1 ? 'Restaurant' : 'Consumer' !!} User </a>
 

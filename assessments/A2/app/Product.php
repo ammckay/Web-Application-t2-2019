@@ -15,4 +15,8 @@ class Product extends Model
     function order() {
         return $this->belongsToMany('App\Order');
     }
+
+    function cart() {
+        return $this->belongsTo('App\Cart');
+    }
 }
