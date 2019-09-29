@@ -14,6 +14,7 @@
 use App\User;
 use App\Product;
 use App\Manufacturer;
+use App\Cart;
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route for displaying the individual products
@@ -27,7 +28,7 @@ Route::get('order/top', 'OrderController@top')->name('top');
 Route::get('order/statistic', 'OrderController@statistic')->name('statistic');
 
 // Route for displaying the statistics page
-Route::get('cart/order', 'CartController@order')->name('order');
+Route::get('cart/purchase', 'CartController@purchase')->name('purchase');
 
 // Route for logout
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\User;
 use App\Order;
 use App\Cart;
@@ -19,13 +20,14 @@ class CartController extends Controller
      */
     public function index()
     {
+        $orders = Order::all();
         $carts = Cart::all();
         // Get total price of cart
         $sum = Cart::select('price')
                             ->selectRaw('SUM(price) as total')
                             ->get();
 
-        return view('carts.index')->with('carts', $carts)->with('sum', $sum);
+        return view('carts.index')->with('carts', $carts)->with('sum', $sum)->with('orders', $orders);
     }
 
     /**
@@ -98,6 +100,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
+        // Delete the selected item from the cart
         $cart = Cart::find($id);
         $cart->delete();
         return redirect("cart");
@@ -109,10 +112,11 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function order()
+    public function purchase()
     {
+        // Delete the selected item from the cart
         $cart = Cart::all();
-        $cart->purchase();
-        return redirect("order");
+        $cart->delete();
+        return redirect("cart");
     }
 }
