@@ -21,6 +21,6 @@ I was able to complete most of the details for this assignment.  A user can regi
 
     <br>
     <h2> ER Diagram </h2>
-    <img src="public/products_images/ERDiagram.png" alt="ER Diagram" style="width:200px;height:200px;">
+    <img src="{{url('/products_images/ERDiagram.png')}}" alt="ER Diagram" style="width:500px;height:500px;">
 
 @endsection
