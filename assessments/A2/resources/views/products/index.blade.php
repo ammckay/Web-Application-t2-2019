@@ -13,7 +13,8 @@
     @endif
 
     <div id="manufacturers">
-        <ul >
+        <ul>
+            <!-- List of restaurants -->
             @foreach ($manufacturers as $manufacturer)
                 <a href="{{ url("product/prod", $manufacturer->id) }}"><li>{{ $manufacturer->name }}</li></a>
             @endforeach

@@ -40,7 +40,7 @@
     </table>
 
 
-    <!-- Form to purchase a single item -->
+    <!-- Form to purchase  NOT WORKING -->
     <form method="POST" action='{{url("cart")}}'>
         {{csrf_field()}}
         {{ method_field('DELETE') }}
